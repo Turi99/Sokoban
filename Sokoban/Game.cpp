@@ -3,7 +3,17 @@
 #include <qpushbutton.h>
 #include <qmessagebox.h>
 
-Game::Game():QGraphicsView() {
+Game::Game(QWidget *parent) :QGraphicsView(parent) {
+	QEvent::ApplicationDeactivate; //to jest stare,jak cos
+
+	/*widget = new QWidget();
+	widget->setGeometry(0, 0, 600, 500);
+
+	scene = new QGraphicsScene();
+	scene->setSceneRect(0, 0, 600, 500);
+	scene->setBackgroundBrush(Qt::gray);
+	widget->setLayout(scene);*/
+	
 	scene = new QGraphicsScene(this);
 	scene->setSceneRect(0, 0, 600, 500);
 	scene->setBackgroundBrush(Qt::gray);
@@ -27,40 +37,35 @@ Game::Game():QGraphicsView() {
 
 	player = new Player();
 	scene->addItem(player);
-	
-	//resetButton = new QPushButton(this);
-	//resetButton->setGeometry(540, 440, 50, 50);
-	//resetButton->setText("Reset");
 
-	//connect(resetButton, SIGNAL(clicked()), this, SLOT(resetGame()));
-	//scene->addWidget(resetButton);
-	//resetButton->show();
-	
-	//connect(resetButton, SIGNAL(pressed()), this, SLOT(resetGame2()));
 }
 
-void Game::resetGame(){
-	QMessageBox::information(this, "", "Zresetowano poziom");
-	/*if (map && player) {
-		scene->removeItem(map);
-		scene->removeItem(player);
-		//delete map;
-		//delete player;
-		map->deleteLater();
-		player->deleteLater();
-	}
 
-	map = new Map();
-	scene->addItem(map);
-
-	player = new Player();
-	scene->addItem(player);*/
+void Game::resetGame2(QKeyEvent *event) {
+	//QKeyEvent *event = new QKeyEvent(QEvent::KeyPress, Qt::Key_R, Qt::NoModifier);
 	
-}
-
-void Game::resetGame2() {
-	QKeyEvent *event = new QKeyEvent(QEvent::KeyPress, Qt::Key_R, Qt::NoModifier);
 	if (event->key() == Qt::Key_R) {
 		QMessageBox::information(this, "", "Zresetowano poziom");
 	}
+}
+
+void Game::keyPressEvent(QKeyEvent *event){
+	if (event->key() == Qt::Key_R) {
+		scene->removeItem(map);
+		delete map;
+		map = new Map();
+		scene->addItem(map);
+
+		scene->removeItem(player);
+		delete player;
+		player = new Player();
+		scene->addItem(player);
+
+		//scene->removeItem(player);
+		//player->setPos(50, 50);
+		//player->set();
+		//scene->addItem(player);
+		QMessageBox::information(this, "", "Zresetowano poziom");
+	}
+	QGraphicsView::keyPressEvent(event);
 }

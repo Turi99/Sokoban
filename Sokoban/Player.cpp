@@ -114,13 +114,9 @@ void Player::keyPressEvent(QKeyEvent *event){
 
 	if (game->map->getCoinCount() == 0) {
 		QMessageBox::information(game, "", "Koniec gry");
-		/*setPos(50, 50);
-		delete game->map; 
-		game->map = new Map();
-		game->scene->addItem(game->map);
-		*/
 		
-		exit(0);
+		
+		//exit(0);
 	}
 
 }

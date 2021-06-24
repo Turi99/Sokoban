@@ -6,10 +6,14 @@
 #include "Player.h"
 #include "Map.h"
 
-class Game : public QGraphicsView {
+class Game : public /*QWidget{ //*/QGraphicsView {
+	Q_OBJECT
 public:
-	Game();
+	//explicit Game(QWidget *parent = 0);
+	Game(QWidget *parent = 0);
+	//Game(QGraphicsScene *scene, QWidget *parent = nullptr);
 
+	//QGraphicsView *view;
 	QGraphicsScene *scene;
 	Player *player;
 	Map *map;
@@ -18,10 +22,11 @@ public:
 	QLabel *l2;
 	QLabel *l4;
 	QPushButton *resetButton;
-public slots:
-	void resetGame();
-	void resetGame2();
-	//void resetGame2(QKeyEvent *event);
+	void resetGame2(QKeyEvent *event);
+//protected:
+	void keyPressEvent(QKeyEvent *event) override;
+
+
 };
 
 #endif // !GAME_H
