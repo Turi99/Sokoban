@@ -14,16 +14,17 @@ public:
 	//Game(QGraphicsScene *scene, QWidget *parent = nullptr);
 
 	//QGraphicsView *view;
+	QGraphicsView *mainMenu;
 	QGraphicsScene *scene;
-	Player *player;
-	Map *map;
+	Player *player = nullptr;
+	Map *map = nullptr;
 
 	QLabel *l;
 	QLabel *l2;
 	QLabel *l4;
 	QPushButton *resetButton;
 	void resetGame2(QKeyEvent *event);
-//protected:
+protected:
 	void keyPressEvent(QKeyEvent *event) override;
 
 

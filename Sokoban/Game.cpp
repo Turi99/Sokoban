@@ -6,37 +6,48 @@
 Game::Game(QWidget *parent) :QGraphicsView(parent) {
 	QEvent::ApplicationDeactivate; //to jest stare,jak cos
 
-	/*widget = new QWidget();
-	widget->setGeometry(0, 0, 600, 500);
+	/*get->setGeometry(0, 0, 600, 500);
 
 	scene = new QGraphicsScene();
 	scene->setSceneRect(0, 0, 600, 500);
 	scene->setBackgroundBrush(Qt::gray);
 	widget->setLayout(scene);*/
 	
-	scene = new QGraphicsScene(this);
+	/*scene = new QGraphicsScene(this);
 	scene->setSceneRect(0, 0, 600, 500);
 	scene->setBackgroundBrush(Qt::gray);
-	setScene(scene);
+	setScene(scene);*/
+	
+	mainMenu = new QGraphicsView(this);
+	mainMenu->setGeometry(0, 0, 620, 520);
+	mainMenu->setStyleSheet("background-color:green");
 	
 	setFixedSize(620, 520);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	
-	l = new QLabel(this);
-	l->setGeometry(530, 10, 70, 25);
+
+	/*l = new QLabel(this);
+	l->setGeometry(530, 10, 80, 25);
 	
 	l2 = new QLabel(this);
-	l2->setGeometry(530, 40, 70, 25);
+	l2->setGeometry(530, 40, 80, 25);
 	
 	l4 = new QLabel(this);
-	l4->setGeometry(530, 70, 70, 25);
+	l4->setGeometry(530, 70, 80, 30);*/
 
-	map = new Map();
+	/*map = new Map();
 	scene->addItem(map);
 
 	player = new Player();
-	scene->addItem(player);
+	scene->addItem(player);*/
+
+	/*if (!map) {
+		QMessageBox::information(this, "", "Nie ma mapy");
+	}
+	else {
+		QMessageBox::information(this, "", "Jest mapa");
+	}*/
 
 }
 
@@ -50,22 +61,62 @@ void Game::resetGame2(QKeyEvent *event) {
 }
 
 void Game::keyPressEvent(QKeyEvent *event){
-	if (event->key() == Qt::Key_R) {
-		scene->removeItem(map);
-		delete map;
+	if (event->key() == Qt::Key_1) {
+		delete mainMenu;
+
+		scene = new QGraphicsScene(this);
+		scene->setSceneRect(0, 0, 600, 500);
+		scene->setBackgroundBrush(Qt::gray);
+		setScene(scene);
+
+		l = new QLabel(this);
+		l->setGeometry(530, 10, 80, 25);
+
+		l2 = new QLabel(this);
+		l2->setGeometry(530, 40, 80, 25);
+
+		l4 = new QLabel(this);
+		l4->setGeometry(530, 70, 80, 30);
+
 		map = new Map();
 		scene->addItem(map);
 
-		scene->removeItem(player);
-		delete player;
 		player = new Player();
 		scene->addItem(player);
 
-		//scene->removeItem(player);
-		//player->setPos(50, 50);
-		//player->set();
-		//scene->addItem(player);
-		QMessageBox::information(this, "", "Zresetowano poziom");
+	}
+	if (event->key() == Qt::Key_Escape) {
+		scene->removeItem(map);
+		delete map;
+
+		scene->removeItem(player);
+		delete player;
+		delete l, l2, l4;
+		
+		mainMenu = new QGraphicsView(this);
+		mainMenu->setGeometry(0, 0, 620, 520);
+		mainMenu->setStyleSheet("background-color:green");
+
+	}
+	if (event->key() == Qt::Key_R) {
+		if (map && player) {
+			scene->removeItem(map);
+			delete map;
+			map = new Map();
+			scene->addItem(map);
+
+			scene->removeItem(player);
+			delete player;
+			player = new Player();
+			scene->addItem(player);
+			
+			//scene->removeItem(player);
+			//player->setPos(50, 50);
+			//player->set();
+			//scene->addItem(player);
+			QMessageBox::information(this, "", "Zresetowano poziom");
+		}
+
 	}
 	QGraphicsView::keyPressEvent(event);
 }

@@ -114,8 +114,12 @@ void Player::keyPressEvent(QKeyEvent *event){
 
 	if (game->map->getCoinCount() == 0) {
 		QMessageBox::information(game, "", "Koniec gry");
-		
-		
+		game->l4->setText("Coin counts: " + QString::number(game->map->getCoinCount())+"\n"+"Koniec poziomu");
+		/*QGraphicsRectItem *tlo = new QGraphicsRectItem(this);
+		tlo->setRect(0, 0, 600, 500);
+		tlo->setPos(0, 0);
+		tlo->setBrush(Qt::red);*/
+
 		//exit(0);
 	}
 
