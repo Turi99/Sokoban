@@ -87,11 +87,13 @@
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Game.h" />
+    <QtMoc Include="MainMenu.h" />
     <ClInclude Include="resource.h" />
     <QtMoc Include="Map.h" />
     <QtMoc Include="Player.h" />

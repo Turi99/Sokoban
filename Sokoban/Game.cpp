@@ -18,13 +18,25 @@ Game::Game(QWidget *parent) :QGraphicsView(parent) {
 	scene->setBackgroundBrush(Qt::gray);
 	setScene(scene);*/
 	
-	mainMenu = new QGraphicsView(this);
+	/*mainMenu = new QGraphicsView(this);
 	mainMenu->setGeometry(0, 0, 620, 520);
-	mainMenu->setStyleSheet("background-color:green");
+	mainMenu->setStyleSheet("background-color:green");*/
+	//scene->addWidget(mainMenu);
+
+	scene = new QGraphicsScene(this);
+	scene->setSceneRect(0, 0, 620, 520);
+	setScene(scene);
 	
 	setFixedSize(620, 520);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	
+	/*l = new QLabel(this);
+	l->setGeometry(530, 10, 80, 25);*/
+	
+	mainMenu = new MainMenu();
+	scene->addItem(mainMenu);
+
 	
 
 	/*l = new QLabel(this);
@@ -61,41 +73,88 @@ void Game::resetGame2(QKeyEvent *event) {
 }
 
 void Game::keyPressEvent(QKeyEvent *event){
+	if (mainMenu) {
+		if (event->key() == Qt::Key_Space) {
+			//if (mainMenu) {
+				if (mainMenu->getCursorPosition() == 1) {
+					if (!(map && player)) {
+						//tworzy obiekty gracz i mapa oraz usuwa meny glowne
+						delete mainMenu;
+
+						//scene = new QGraphicsScene(this);
+						//scene->setSceneRect(0, 0, 600, 500);
+						scene->setBackgroundBrush(Qt::gray);
+						//setScene(scene);
+
+						l = new QLabel(this);
+						l->setGeometry(530, 10, 80, 25);
+
+						l2 = new QLabel(this);
+						l2->setGeometry(530, 40, 80, 25);
+
+						l4 = new QLabel(this);
+						l4->setGeometry(530, 70, 80, 30);
+
+						map = new Map();
+						scene->addItem(map);
+
+						player = new Player();
+						scene->addItem(player);
+					}
+				}
+				else if (mainMenu->getCursorPosition() == 2) {
+					quick_exit(0);
+				}
+			//}
+		}
+	}
 	if (event->key() == Qt::Key_1) {
-		delete mainMenu;
+		/*if (!(map && player)){
+			//tworzy obiekty gracz i mapa oraz usuwa meny glowne
+			delete mainMenu;
 
-		scene = new QGraphicsScene(this);
-		scene->setSceneRect(0, 0, 600, 500);
-		scene->setBackgroundBrush(Qt::gray);
-		setScene(scene);
+			//scene = new QGraphicsScene(this);
+			//scene->setSceneRect(0, 0, 600, 500);
+			scene->setBackgroundBrush(Qt::gray);
+			//setScene(scene);
 
-		l = new QLabel(this);
-		l->setGeometry(530, 10, 80, 25);
+			l = new QLabel(this);
+			l->setGeometry(530, 10, 80, 25);
 
-		l2 = new QLabel(this);
-		l2->setGeometry(530, 40, 80, 25);
+			l2 = new QLabel(this);
+			l2->setGeometry(530, 40, 80, 25);
 
-		l4 = new QLabel(this);
-		l4->setGeometry(530, 70, 80, 30);
+			l4 = new QLabel(this);
+			l4->setGeometry(530, 70, 80, 30);
 
-		map = new Map();
-		scene->addItem(map);
+			map = new Map();
+			scene->addItem(map);
 
-		player = new Player();
-		scene->addItem(player);
-
+			player = new Player();
+			scene->addItem(player);
+		}*/
 	}
 	if (event->key() == Qt::Key_Escape) {
 		scene->removeItem(map);
 		delete map;
+		map = nullptr;
 
 		scene->removeItem(player);
 		delete player;
+		player = nullptr;
 		delete l, l2, l4;
+
+		mainMenu = new MainMenu();
+		scene->addItem(mainMenu);
 		
-		mainMenu = new QGraphicsView(this);
+		/*mainMenu = new QGraphicsView(this);
 		mainMenu->setGeometry(0, 0, 620, 520);
-		mainMenu->setStyleSheet("background-color:green");
+		mainMenu->setStyleSheet("background-color:green");*/
+
+		/*if (mainMenu) {
+			QMessageBox::information(this, "", "Jest menu glowne");
+		}*/
+		//mainMenu->show();
 
 	}
 	if (event->key() == Qt::Key_R) {

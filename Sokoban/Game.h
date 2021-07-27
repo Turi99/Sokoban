@@ -3,6 +3,7 @@
 
 #include <QGraphicsView>
 #include <qpushbutton.h>
+#include "MainMenu.h"
 #include "Player.h"
 #include "Map.h"
 
@@ -14,8 +15,9 @@ public:
 	//Game(QGraphicsScene *scene, QWidget *parent = nullptr);
 
 	//QGraphicsView *view;
-	QGraphicsView *mainMenu;
-	QGraphicsScene *scene;
+	//QGraphicsView *mainMenu=nullptr;
+	QGraphicsScene *scene=nullptr;
+	MainMenu *mainMenu = nullptr;
 	Player *player = nullptr;
 	Map *map = nullptr;
 

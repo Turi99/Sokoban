@@ -13,3 +13,5 @@ int main(int argc, char *argv[]) {
 	
 	return a.exec();
 }
+
+//https://youtu.be/lLrhonSCV4s?t=7
