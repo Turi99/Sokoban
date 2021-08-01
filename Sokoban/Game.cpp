@@ -89,6 +89,10 @@ void Game::keyPressEvent(QKeyEvent *event){
 						l = new QLabel(this);
 						l->setGeometry(530, 10, 80, 25);
 
+						// do poprawy
+						txt = new QGraphicsTextItem();
+						txt->setPos(530, 10);
+
 						l2 = new QLabel(this);
 						l2->setGeometry(530, 40, 80, 25);
 
@@ -103,6 +107,13 @@ void Game::keyPressEvent(QKeyEvent *event){
 					}
 				}
 				else if (mainMenu->getCursorPosition() == 2) {
+					delete mainMenu;
+					
+					selectLevel = new SelectLevel();
+					scene->addItem(selectLevel);
+
+				}
+				else if (mainMenu->getCursorPosition() == 3) {
 					quick_exit(0);
 				}
 			//}
@@ -135,14 +146,21 @@ void Game::keyPressEvent(QKeyEvent *event){
 		}*/
 	}
 	if (event->key() == Qt::Key_Escape) {
-		scene->removeItem(map);
-		delete map;
-		map = nullptr;
+		if (map && player) {
+			scene->removeItem(map);
+			delete map;
+			map = nullptr;
 
-		scene->removeItem(player);
-		delete player;
-		player = nullptr;
-		delete l, l2, l4;
+			scene->removeItem(player);
+			delete player;
+			player = nullptr;
+			delete l, l2, l4;
+		}
+		else if (selectLevel) {
+			scene->removeItem(selectLevel);
+			delete selectLevel;
+			selectLevel = nullptr;
+		}
 
 		mainMenu = new MainMenu();
 		scene->addItem(mainMenu);

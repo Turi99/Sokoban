@@ -109,6 +109,7 @@ void Player::keyPressEvent(QKeyEvent *event){
 	std::pair<int,int> xy = m.getCoordinates(pos().x(),pos().y());
 
 	game->l->setText(QString::number(pos().x())+" "+ QString::number(pos().y()));
+	game->txt->setPlainText(QString::number(pos().x())+" "+ QString::number(pos().y()));
 	game->l2->setText(QString::number(xy.first+1) + " " + QString::number(xy.second+1));
 	game->l4->setText("Coin counts: "+QString::number(game->map->getCoinCount()));
 

@@ -90,8 +90,10 @@
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="SelectLevel.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="SelectLevel.h" />
     <QtMoc Include="Game.h" />
     <QtMoc Include="MainMenu.h" />
     <ClInclude Include="resource.h" />

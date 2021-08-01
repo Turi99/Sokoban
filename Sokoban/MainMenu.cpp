@@ -19,7 +19,11 @@ MainMenu::MainMenu(QGraphicsItem *parent) : QObject(), QGraphicsRectItem(parent)
 
 	test2 = new QGraphicsTextItem(main);
 	test2->setPos(250, 260);
-	test2->setPlainText("Quit");
+	test2->setPlainText("Select level");
+
+	test3 = new QGraphicsTextItem(main);
+	test3->setPos(250, 320);
+	test3->setPlainText("Quit");
 
 	arrow1 = new QGraphicsRectItem(main);
 	arrow1->setRect(200, 200, 30, 30);
@@ -32,11 +36,11 @@ MainMenu::MainMenu(QGraphicsItem *parent) : QObject(), QGraphicsRectItem(parent)
 
 void MainMenu::setCursorPosition(int val) {
 	cursorPosition += val;
-	if (cursorPosition > 2) {
+	if (cursorPosition > 3) {
 		cursorPosition = 1;
 	}
 	else if (cursorPosition < 1) {
-		cursorPosition = 2;
+		cursorPosition = 3;
 	}
 	setArrow(cursorPosition);
 }
@@ -47,10 +51,10 @@ int MainMenu::getCursorPosition(){
 
 void MainMenu::keyPressEvent(QKeyEvent *event){
 	if (event->key() == Qt::Key_Up) {
-		setCursorPosition(1);
+		setCursorPosition(-1);
 	}
 	else if (event->key() == Qt::Key_Down) {
-		setCursorPosition(-1);
+		setCursorPosition(1);
 	}
 	/*else if (event->key() == Qt::Key_Enter) {
 		if (cursorPosition == 2) {

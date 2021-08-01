@@ -4,6 +4,7 @@
 #include <QGraphicsView>
 #include <qpushbutton.h>
 #include "MainMenu.h"
+#include "SelectLevel.h"
 #include "Player.h"
 #include "Map.h"
 
@@ -18,12 +19,17 @@ public:
 	//QGraphicsView *mainMenu=nullptr;
 	QGraphicsScene *scene=nullptr;
 	MainMenu *mainMenu = nullptr;
+	SelectLevel *selectLevel = nullptr;
+
 	Player *player = nullptr;
 	Map *map = nullptr;
 
 	QLabel *l;
 	QLabel *l2;
 	QLabel *l4;
+
+	QGraphicsTextItem *txt;
+
 	QPushButton *resetButton;
 	void resetGame2(QKeyEvent *event);
 protected:
