@@ -10,13 +10,18 @@ class SelectLevel : public QObject, public QGraphicsRectItem {
 public:
 	SelectLevel(QGraphicsItem *parent = 0);
 	QGraphicsRectItem *selectLevelScene;
+	void setCursorPosition(int val);
+	int getCursorPosition();
 
 protected:
 	void keyPressEvent(QKeyEvent *event) override;
 
 private:
-	QGraphicsTextItem *text1;
+	QGraphicsTextItem *text1, *lvl1, *lvl2;
+	QGraphicsRectItem *arrow;
 
+	int cursorPosition = 1;
+	void setArrow(int val);
 };
 
 #endif // !SELECTLEVEL_H

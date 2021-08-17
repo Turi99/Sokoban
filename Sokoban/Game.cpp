@@ -72,6 +72,39 @@ void Game::resetGame2(QKeyEvent *event) {
 	}
 }
 
+void Game::createLevel(int val){
+	if (!(map && player)) {
+		//tworzy obiekty gracz i mapa oraz usuwa meny glowne
+		delete selectLevel;
+
+		//scene = new QGraphicsScene(this);
+		//scene->setSceneRect(0, 0, 600, 500);
+		scene->setBackgroundBrush(Qt::gray);
+		//setScene(scene);
+
+		l = new QLabel(this);
+		l->setGeometry(530, 10, 80, 25);
+
+		// do poprawy
+		txt = new QGraphicsTextItem();
+		txt->setPos(530, 10);
+
+		l2 = new QLabel(this);
+		l2->setGeometry(530, 40, 80, 25);
+
+		l4 = new QLabel(this);
+		l4->setGeometry(530, 70, 80, 30);
+
+		//map = new Map(0,"map1.txt");
+		//map = new Map(0, val == 1 ? "map1.txt" : "map2.txt");
+		map = new Map(0, val);
+		scene->addItem(map);
+
+		player = new Player();
+		scene->addItem(player);
+	}
+}
+
 void Game::keyPressEvent(QKeyEvent *event){
 	if (mainMenu) {
 		if (event->key() == Qt::Key_Space) {
@@ -99,6 +132,7 @@ void Game::keyPressEvent(QKeyEvent *event){
 						l4 = new QLabel(this);
 						l4->setGeometry(530, 70, 80, 30);
 
+						//map = new Map(0,"map1.txt");
 						map = new Map();
 						scene->addItem(map);
 
@@ -179,6 +213,7 @@ void Game::keyPressEvent(QKeyEvent *event){
 		if (map && player) {
 			scene->removeItem(map);
 			delete map;
+			//map = new Map(0,"map1.txt");
 			map = new Map();
 			scene->addItem(map);
 

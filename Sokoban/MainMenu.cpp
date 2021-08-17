@@ -30,7 +30,7 @@ MainMenu::MainMenu(QGraphicsItem *parent) : QObject(), QGraphicsRectItem(parent)
 	arrow1->setBrush(QColor(Qt::red));
 
 	arrow2 = new QGraphicsRectItem(main);
-	arrow2->setRect(300, 200, 30, 30);
+	arrow2->setRect(350, 200, 30, 30);
 	arrow2->setBrush(QColor(Qt::red));
 }
 
@@ -69,5 +69,5 @@ void MainMenu::setArrow(int val){
 	//QMessageBox::information(game, "", QString::number(val));
 	//test->setPlainText(QString::number(val));
 	arrow1->setRect(200, 200+(55*(val-1)), 30, 30);
-	arrow2->setRect(300, 200+(55*(val-1)), 30, 30);
+	arrow2->setRect(350, 200+(55*(val-1)), 30, 30);
 }

@@ -32,6 +32,8 @@ public:
 
 	QPushButton *resetButton;
 	void resetGame2(QKeyEvent *event);
+	void createLevel(int val);
+
 protected:
 	void keyPressEvent(QKeyEvent *event) override;
 

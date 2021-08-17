@@ -11,6 +11,7 @@ class Map :public QObject, public QGraphicsRectItem{
 	Q_OBJECT
 public:
 	Map(QGraphicsItem *parent = 0);
+	Map(QGraphicsItem *parent, int val);
 	static std::pair<int, int> getCoordinates(int x, int y);
 	static int getNumber(int x, int y);
 	
