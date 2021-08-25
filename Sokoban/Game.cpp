@@ -1,6 +1,5 @@
 #include "Game.h"
 #include <QKeyEvent>
-#include <qpushbutton.h>
 #include <qmessagebox.h>
 
 Game::Game(QWidget *parent) :QGraphicsView(parent) {
@@ -61,15 +60,6 @@ Game::Game(QWidget *parent) :QGraphicsView(parent) {
 		QMessageBox::information(this, "", "Jest mapa");
 	}*/
 
-}
-
-
-void Game::resetGame2(QKeyEvent *event) {
-	//QKeyEvent *event = new QKeyEvent(QEvent::KeyPress, Qt::Key_R, Qt::NoModifier);
-	
-	if (event->key() == Qt::Key_R) {
-		QMessageBox::information(this, "", "Zresetowano poziom");
-	}
 }
 
 void Game::createLevel(int val){
@@ -189,15 +179,24 @@ void Game::keyPressEvent(QKeyEvent *event){
 			delete player;
 			player = nullptr;
 			delete l, l2, l4;
+
+			mainMenu = new MainMenu();
+			scene->addItem(mainMenu);
 		}
 		else if (selectLevel) {
 			scene->removeItem(selectLevel);
 			delete selectLevel;
 			selectLevel = nullptr;
+
+			mainMenu = new MainMenu();
+			scene->addItem(mainMenu);
+		}
+		else if (mainMenu) {
+			exit(EXIT_SUCCESS);
 		}
 
-		mainMenu = new MainMenu();
-		scene->addItem(mainMenu);
+		/*mainMenu = new MainMenu();
+		scene->addItem(mainMenu);*/
 		
 		/*mainMenu = new QGraphicsView(this);
 		mainMenu->setGeometry(0, 0, 620, 520);
@@ -222,6 +221,8 @@ void Game::keyPressEvent(QKeyEvent *event){
 			player = new Player();
 			scene->addItem(player);
 			
+			//createLevel()
+
 			//scene->removeItem(player);
 			//player->setPos(50, 50);
 			//player->set();

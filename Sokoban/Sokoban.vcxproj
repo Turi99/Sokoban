@@ -86,6 +86,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Level.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Map.cpp" />
@@ -96,6 +97,7 @@
     <QtMoc Include="SelectLevel.h" />
     <QtMoc Include="Game.h" />
     <QtMoc Include="MainMenu.h" />
+    <QtMoc Include="Level.h" />
     <ClInclude Include="resource.h" />
     <QtMoc Include="Map.h" />
     <QtMoc Include="Player.h" />

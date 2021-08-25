@@ -2,7 +2,6 @@
 #define GAME_H
 
 #include <QGraphicsView>
-#include <qpushbutton.h>
 #include "MainMenu.h"
 #include "SelectLevel.h"
 #include "Player.h"
@@ -30,8 +29,6 @@ public:
 
 	QGraphicsTextItem *txt;
 
-	QPushButton *resetButton;
-	void resetGame2(QKeyEvent *event);
 	void createLevel(int val);
 
 protected:
