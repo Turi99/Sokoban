@@ -94,9 +94,9 @@
     <ClCompile Include="SelectLevel.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="SelectLevel.h" />
+    <ClInclude Include="SelectLevel.h" />
     <QtMoc Include="Game.h" />
-    <QtMoc Include="MainMenu.h" />
+    <ClInclude Include="MainMenu.h" />
     <QtMoc Include="Level.h" />
     <ClInclude Include="resource.h" />
     <QtMoc Include="Map.h" />

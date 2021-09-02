@@ -19,7 +19,7 @@ Player::Player(QGraphicsItem *parent) :QObject(), QGraphicsRectItem(parent) {
 }
 
 void Player::keyPressEvent(QKeyEvent *event){
-	Map m;
+	/*Map m;
 	int posX = pos().x();
 	int posY = pos().y();
 	
@@ -36,9 +36,9 @@ void Player::keyPressEvent(QKeyEvent *event){
 				game->map->mapka[posX / 50][posY / 50]->setBrush(QPixmap(":/images/white.png"));
 				game->map->mapa[posY / 50][posX / 50] = 0;
 			}
-			/*else {
+			//else {
 				//QMessageBox::information(game, "", "mie mozna przesunac pudelka");
-			}*/
+			//}
 		}
 		else if (game->map->mapa[posY / 50 - 0][posX / 50 - 1] != 1) {
 			setPos(x() - 50, y());
@@ -57,9 +57,9 @@ void Player::keyPressEvent(QKeyEvent *event){
 				game->map->mapka[posX / 50][posY / 50]->setBrush(QPixmap(":/images/white.png"));
 				game->map->mapa[posY / 50][posX / 50] = 0;
 			}
-			/*else {
+			//else {
 				//QMessageBox::information(game, "", "mie mozna przesunac pudelka");
-			}*/
+			//}
 		}
 		else if (game->map->mapa[posY / 50 - 0][posX / 50 + 1] != 1) {
 			setPos(x() + 50, y());
@@ -77,9 +77,9 @@ void Player::keyPressEvent(QKeyEvent *event){
 				game->map->mapka[posX / 50][posY / 50]->setBrush(QPixmap(":/images/white.png"));
 				game->map->mapa[posY / 50][posX / 50] = 0;
 			}
-			/*else {
+			//else {
 				//QMessageBox::information(game, "", "mie mozna przesunac pudelka");
-			}*/
+			//}
 		}
 		else if (game->map->mapa[posY / 50 - 1][posX / 50 + 0] != 1) {
 			setPos(x(), y() - 50);
@@ -97,9 +97,9 @@ void Player::keyPressEvent(QKeyEvent *event){
 				game->map->mapka[posX / 50][posY / 50]->setBrush(QPixmap(":/images/white.png"));
 				game->map->mapa[posY / 50][posX / 50] = 0;
 			}
-			/*else {
+			//else {
 				//QMessageBox::information(game, "", "mie mozna przesunac pudelka");
-			}*/
+			}//
 		}
 		else if (game->map->mapa[posY / 50 + 1][posX / 50 + 0] != 1) {
 			setPos(x(), y() + 50);
@@ -116,12 +116,12 @@ void Player::keyPressEvent(QKeyEvent *event){
 	if (game->map->getCoinCount() == 0) {
 		QMessageBox::information(game, "", "Koniec gry");
 		game->l4->setText("Coin counts: " + QString::number(game->map->getCoinCount())+"\n"+"Koniec poziomu");
-		/*QGraphicsRectItem *tlo = new QGraphicsRectItem(this);
-		tlo->setRect(0, 0, 600, 500);
-		tlo->setPos(0, 0);
-		tlo->setBrush(Qt::red);*/
+		// /*QGraphicsRectItem *tlo = new QGraphicsRectItem(this);
+		//tlo->setRect(0, 0, 600, 500);
+		//tlo->setPos(0, 0);
+		//tlo->setBrush(Qt::red);
 
 		//exit(0);
-	}
+	}*/
 
 }

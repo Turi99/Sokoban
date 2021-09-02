@@ -12,7 +12,7 @@ class Level: public QObject, public QGraphicsRectItem {
 
 public:
 	Level(QGraphicsItem *parent = 0);
-	//Level(QGraphicsItem *parent, int nrLevel); // ?? Teorzenie levelu poprzez wybow z "Wybierz poziom"
+	//Level(QGraphicsItem *parent, int nrLevel); // ?? Tworzenie levelu poprzez wybow z "Wybierz poziom"
 	void createLevel(int val);
 
 protected:

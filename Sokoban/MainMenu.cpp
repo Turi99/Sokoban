@@ -5,7 +5,7 @@
 
 extern Game *game;
 
-MainMenu::MainMenu(QGraphicsItem *parent) : QObject(), QGraphicsRectItem(parent) {
+MainMenu::MainMenu(QGraphicsItem *parent) : /*QObject(),*/ QGraphicsRectItem(parent) {
 	main = new QGraphicsRectItem(this);
 	main->setTransformOriginPoint(0, 0);
 	main->setRect(0, 0, 620, 520); 
@@ -56,12 +56,17 @@ void MainMenu::keyPressEvent(QKeyEvent *event){
 	else if (event->key() == Qt::Key_Down) {
 		setCursorPosition(1);
 	}
-	/*else if (event->key() == Qt::Key_Enter) {
-		if (cursorPosition == 2) {
-			//
+	else if (event->key() == Qt::Key_Escape) {
+		exit(EXIT_SUCCESS);
+	}
+	else if (event->key() == Qt::Key_Space) {
+		if (cursorPosition == 1) {
+			game->menuToLevel();
 		}
-	}*/
-	//QGraphicsItem::keyPressEvent(event);
+		else if (cursorPosition == 2) {
+			game->menuToSelectLvl();
+		}
+	}
 }
 
 void MainMenu::setArrow(int val){

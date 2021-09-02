@@ -5,7 +5,7 @@
 
 extern Game *game;
 
-SelectLevel::SelectLevel(QGraphicsItem *parent) : QObject(), QGraphicsRectItem(parent) {
+SelectLevel::SelectLevel(QGraphicsItem *parent) : /*QObject(),*/ QGraphicsRectItem(parent) {
 	selectLevelScene = new QGraphicsRectItem(this);
 	selectLevelScene->setTransformOriginPoint(0, 0);
 	selectLevelScene->setRect(0, 0, 620, 520);
@@ -45,7 +45,7 @@ int SelectLevel::getCursorPosition(){
 	return cursorPosition;
 }
 
-void SelectLevel::keyPressEvent(QKeyEvent *event){
+void SelectLevel::keyPressEvent(QKeyEvent *event) {
 	/*if(event->key() == Qt::Key_A){
 		QMessageBox::information(game, "", "Click key A");
 	}*/
@@ -57,7 +57,10 @@ void SelectLevel::keyPressEvent(QKeyEvent *event){
 	}
 	else if (event->key() == Qt::Key_1) {
 		//QMessageBox::information(game, "", "Selected level: " + QString::number(cursorPosition));
-		game->createLevel(cursorPosition);
+		//game->createLevel(cursorPosition);
+	}
+	else if (event->key() == Qt::Key_Escape) {
+		game->selectLvlToMenu();
 	}
 }
 

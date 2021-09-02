@@ -5,8 +5,8 @@
 #include <qobject.h>
 #include <qgraphicsitem.h>
 
-class SelectLevel : public QObject, public QGraphicsRectItem {
-	Q_OBJECT
+class SelectLevel : /*public QObject,*/ public QGraphicsRectItem {
+	//Q_OBJECT
 public:
 	SelectLevel(QGraphicsItem *parent = 0);
 	QGraphicsRectItem *selectLevelScene;

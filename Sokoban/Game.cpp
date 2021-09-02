@@ -2,24 +2,65 @@
 #include <QKeyEvent>
 #include <qmessagebox.h>
 
-Game::Game(QWidget *parent) :QGraphicsView(parent) {
+
+Game::Game(QWidget *parent) : QGraphicsView(parent) {
+	QEvent::ApplicationActivate; //to jest stare,jak cos
+
+	scene = new QGraphicsScene(this);
+	scene->setSceneRect(0, 0, 620, 520);
+	setScene(scene);
+
+	setFixedSize(620, 520);
+	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+	mainMenu = new MainMenu();
+	scene->addItem(mainMenu);
+
+}
+
+void Game::menuToLevel() {
+	delete mainMenu;
+	mainMenu = nullptr;
+	level = new Level();
+	scene->addItem(level);
+}
+
+void Game::menuToSelectLvl() {
+	delete mainMenu;
+	mainMenu = nullptr;
+	selectLevel = new SelectLevel();
+	scene->addItem(selectLevel);
+}
+
+void Game::selectLvlToMenu() {
+	delete selectLevel;
+	selectLevel = nullptr;
+	mainMenu = new MainMenu();
+	scene->addItem(mainMenu);
+}
+
+///////////////////
+
+
+/*Game::Game(QWidget *parent) :QGraphicsView(parent) {
 	QEvent::ApplicationDeactivate; //to jest stare,jak cos
 
-	/*get->setGeometry(0, 0, 600, 500);
+	get->setGeometry(0, 0, 600, 500);
 
 	scene = new QGraphicsScene();
 	scene->setSceneRect(0, 0, 600, 500);
 	scene->setBackgroundBrush(Qt::gray);
-	widget->setLayout(scene);*/
+	widget->setLayout(scene);
 	
 	/*scene = new QGraphicsScene(this);
 	scene->setSceneRect(0, 0, 600, 500);
 	scene->setBackgroundBrush(Qt::gray);
-	setScene(scene);*/
+	setScene(scene);
 	
-	/*mainMenu = new QGraphicsView(this);
+	mainMenu = new QGraphicsView(this);
 	mainMenu->setGeometry(0, 0, 620, 520);
-	mainMenu->setStyleSheet("background-color:green");*/
+	mainMenu->setStyleSheet("background-color:green");
 	//scene->addWidget(mainMenu);
 
 	scene = new QGraphicsScene(this);
@@ -30,39 +71,39 @@ Game::Game(QWidget *parent) :QGraphicsView(parent) {
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	
-	/*l = new QLabel(this);
-	l->setGeometry(530, 10, 80, 25);*/
+	l = new QLabel(this);
+	l->setGeometry(530, 10, 80, 25);
 	
 	mainMenu = new MainMenu();
 	scene->addItem(mainMenu);
 
 	
 
-	/*l = new QLabel(this);
+	l = new QLabel(this);
 	l->setGeometry(530, 10, 80, 25);
 	
 	l2 = new QLabel(this);
 	l2->setGeometry(530, 40, 80, 25);
 	
 	l4 = new QLabel(this);
-	l4->setGeometry(530, 70, 80, 30);*/
+	l4->setGeometry(530, 70, 80, 30);
 
-	/*map = new Map();
+	map = new Map();
 	scene->addItem(map);
 
 	player = new Player();
-	scene->addItem(player);*/
+	scene->addItem(player);
 
-	/*if (!map) {
+	if (!map) {
 		QMessageBox::information(this, "", "Nie ma mapy");
 	}
 	else {
 		QMessageBox::information(this, "", "Jest mapa");
-	}*/
+	}
 
-}
+}*/
 
-void Game::createLevel(int val){
+/*void Game::createLevel(int val){
 	if (!(map && player)) {
 		//tworzy obiekty gracz i mapa oraz usuwa meny glowne
 		delete selectLevel;
@@ -93,9 +134,9 @@ void Game::createLevel(int val){
 		player = new Player();
 		scene->addItem(player);
 	}
-}
+}*/
 
-void Game::keyPressEvent(QKeyEvent *event){
+/*void Game::keyPressEvent(QKeyEvent *event){
 	if (mainMenu) {
 		if (event->key() == Qt::Key_Space) {
 			//if (mainMenu) {
@@ -144,7 +185,7 @@ void Game::keyPressEvent(QKeyEvent *event){
 		}
 	}
 	if (event->key() == Qt::Key_1) {
-		/*if (!(map && player)){
+		if (!(map && player)){
 			//tworzy obiekty gracz i mapa oraz usuwa meny glowne
 			delete mainMenu;
 
@@ -167,7 +208,7 @@ void Game::keyPressEvent(QKeyEvent *event){
 
 			player = new Player();
 			scene->addItem(player);
-		}*/
+		}
 	}
 	if (event->key() == Qt::Key_Escape) {
 		if (map && player) {
@@ -195,16 +236,16 @@ void Game::keyPressEvent(QKeyEvent *event){
 			exit(EXIT_SUCCESS);
 		}
 
-		/*mainMenu = new MainMenu();
-		scene->addItem(mainMenu);*/
+		mainMenu = new MainMenu();
+		scene->addItem(mainMenu);
 		
-		/*mainMenu = new QGraphicsView(this);
+		mainMenu = new QGraphicsView(this);
 		mainMenu->setGeometry(0, 0, 620, 520);
-		mainMenu->setStyleSheet("background-color:green");*/
+		mainMenu->setStyleSheet("background-color:green");
 
-		/*if (mainMenu) {
+		if (mainMenu) {
 			QMessageBox::information(this, "", "Jest menu glowne");
-		}*/
+		}
 		//mainMenu->show();
 
 	}
@@ -232,4 +273,5 @@ void Game::keyPressEvent(QKeyEvent *event){
 
 	}
 	QGraphicsView::keyPressEvent(event);
-}
+}*/
+

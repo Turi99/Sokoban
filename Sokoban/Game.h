@@ -4,37 +4,21 @@
 #include <QGraphicsView>
 #include "MainMenu.h"
 #include "SelectLevel.h"
-#include "Player.h"
-#include "Map.h"
+#include "Level.h"
 
-class Game : public /*QWidget{ //*/QGraphicsView {
+class Game : public QGraphicsView {
 	Q_OBJECT
 public:
-	//explicit Game(QWidget *parent = 0);
 	Game(QWidget *parent = 0);
-	//Game(QGraphicsScene *scene, QWidget *parent = nullptr);
 
-	//QGraphicsView *view;
-	//QGraphicsView *mainMenu=nullptr;
-	QGraphicsScene *scene=nullptr;
+	QGraphicsScene *scene = nullptr;
 	MainMenu *mainMenu = nullptr;
 	SelectLevel *selectLevel = nullptr;
+	Level *level = nullptr;
 
-	Player *player = nullptr;
-	Map *map = nullptr;
-
-	QLabel *l;
-	QLabel *l2;
-	QLabel *l4;
-
-	QGraphicsTextItem *txt;
-
-	void createLevel(int val);
-
-protected:
-	void keyPressEvent(QKeyEvent *event) override;
-
-
+	void menuToLevel();
+	void menuToSelectLvl();
+	void selectLvlToMenu();
 };
 
 #endif // !GAME_H

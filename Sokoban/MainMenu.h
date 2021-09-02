@@ -5,8 +5,8 @@
 #include <qobject.h>
 #include <qgraphicsitem.h>
 
-class MainMenu : public QObject, public QGraphicsRectItem{
-	Q_OBJECT
+class MainMenu : /*public QObject, */public QGraphicsRectItem{
+	//Q_OBJECT
 public:
 	MainMenu(QGraphicsItem *parent = 0);
 	QGraphicsRectItem *main;
