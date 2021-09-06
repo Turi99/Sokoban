@@ -46,9 +46,6 @@ int SelectLevel::getCursorPosition(){
 }
 
 void SelectLevel::keyPressEvent(QKeyEvent *event) {
-	/*if(event->key() == Qt::Key_A){
-		QMessageBox::information(game, "", "Click key A");
-	}*/
 	if (event->key() == Qt::Key_Up) {
 		setCursorPosition(-1);
 	}
@@ -61,6 +58,9 @@ void SelectLevel::keyPressEvent(QKeyEvent *event) {
 	}
 	else if (event->key() == Qt::Key_Escape) {
 		game->selectLvlToMenu();
+	}
+	else if (event->key() == Qt::Key_Space) {
+		game->selectLvlToLevel();
 	}
 }
 

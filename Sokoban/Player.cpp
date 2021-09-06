@@ -3,6 +3,7 @@
 #include <QKeyEvent>
 #include "Game.h"
 #include "Map.h"
+#include "Level.h"
 #include "qmessagebox.h"
 
 extern Game *game;
@@ -19,6 +20,93 @@ Player::Player(QGraphicsItem *parent) :QObject(), QGraphicsRectItem(parent) {
 }
 
 void Player::keyPressEvent(QKeyEvent *event){
+	
+	if (event->key() == Qt::Key_Escape) {
+		QMessageBox::information(game, "", "escape");
+	}
+	else {
+		int posX = pos().x();
+		int posY = pos().y();
+
+	
+		if (event->key() == Qt::Key_A) {
+			if (game->level->map->mapa[posY / 50 - 0][posX / 50 - 1] == 3) {
+				if (game->level->map->mapa[posY / 50 - 0][posX / 50 - 2] != 1 && game->level->map->mapa[posY / 50 - 0][posX / 50 - 2] != 3) {
+					setPos(x() - 50, y());
+					posX = pos().x();
+					posY = pos().y();
+					game->level->map->mapka[posX / 50 - 1][posY / 50 - 0]->setBrush(QPixmap(":/images/brown.png"));
+					game->level->map->mapa[posY / 50 - 0][posX / 50 - 1] = 3;
+					game->level->map->mapka[posX / 50][posY / 50]->setBrush(QPixmap(":/images/white.png"));
+					game->level->map->mapa[posY / 50][posX / 50] = 0;
+				}
+			}
+			else if (game->level->map->mapa[posY / 50 - 0][posX / 50 - 1] != 1) {
+				setPos(x() - 50, y());
+			}
+		}
+		else if (event->key() == Qt::Key_D) {
+			if (game->level->map->mapa[posY / 50 - 0][posX / 50 + 1] == 3) {
+
+				if (game->level->map->mapa[posY / 50 - 0][posX / 50 + 2] != 1 && game->level->map->mapa[posY / 50 - 0][posX / 50 + 2] != 3) {
+					setPos(x() + 50, y());
+					posX = pos().x();
+					posY = pos().y();
+					game->level->map->mapka[posX / 50 + 1][posY / 50 - 0]->setBrush(QPixmap(":/images/brown.png"));
+					game->level->map->mapa[posY / 50 - 0][posX / 50 + 1] = 3;
+					game->level->map->mapka[posX / 50][posY / 50]->setBrush(QPixmap(":/images/white.png"));
+					game->level->map->mapa[posY / 50][posX / 50] = 0;
+				}
+			}
+			else if (game->level->map->mapa[posY / 50 - 0][posX / 50 + 1] != 1) {
+				setPos(x() + 50, y());
+			}
+		}
+		else if (event->key() == Qt::Key_W) {
+			if (game->level->map->mapa[posY / 50 - 1][posX / 50 + 0] == 3) {
+
+				if (game->level->map->mapa[posY / 50 - 2][posX / 50 + 0] != 1 && game->level->map->mapa[posY / 50 - 2][posX / 50 - 0] != 3) {
+					setPos(x(), y() - 50);
+					posX = pos().x();
+					posY = pos().y();
+					game->level->map->mapka[posX / 50 + 0][posY / 50 - 1]->setBrush(QPixmap(":/images/brown.png"));
+					game->level->map->mapa[posY / 50 - 1][posX / 50 + 0] = 3;
+					game->level->map->mapka[posX / 50][posY / 50]->setBrush(QPixmap(":/images/white.png"));
+					game->level->map->mapa[posY / 50][posX / 50] = 0;
+				}
+			}
+			else if (game->level->map->mapa[posY / 50 - 1][posX / 50 + 0] != 1) {
+				setPos(x(), y() - 50);
+			}
+		}
+		else if (event->key() == Qt::Key_S) {
+			if (game->level->map->mapa[posY / 50 + 1][posX / 50 + 0] == 3) {
+
+				if (game->level->map->mapa[posY / 50 + 2][posX / 50 + 0] != 1 && game->level->map->mapa[posY / 50 + 2][posX / 50 - 0] != 3) {
+					setPos(x(), y() + 50);
+					posX = pos().x();
+					posY = pos().y();
+					game->level->map->mapka[posX / 50 + 0][posY / 50 + 1]->setBrush(QPixmap(":/images/brown.png"));
+					game->level->map->mapa[posY / 50 + 1][posX / 50 + 0] = 3;
+					game->level->map->mapka[posX / 50][posY / 50]->setBrush(QPixmap(":/images/white.png"));
+					game->level->map->mapa[posY / 50][posX / 50] = 0;
+				}
+			}
+			else if (game->level->map->mapa[posY / 50 + 1][posX / 50 + 0] != 1) {
+				setPos(x(), y() + 50);
+			}
+		}
+	
+		game->level->coinCount->setPlainText("Coin counts: " + QString::number(game->level->map->getCoinCount()));
+
+		if (game->level->map->getCoinCount() == 0) {
+			game->level->coinCount->setPlainText("Coin counts: " + QString::number(game->level->map->getCoinCount()) + "\n" + "Koniec poziomu");
+		}
+
+	}
+
+}
+	
 	/*Map m;
 	int posX = pos().x();
 	int posY = pos().y();
@@ -124,4 +212,4 @@ void Player::keyPressEvent(QKeyEvent *event){
 		//exit(0);
 	}*/
 
-}
+

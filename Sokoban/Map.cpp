@@ -10,7 +10,7 @@
 extern Game *game;
 
 Map::Map(QGraphicsItem *parent) :QObject(), QGraphicsRectItem(parent) {
-	//QFile file("D:\\Piotr\\MVS\\c++\\c++ QT\\Sokoban\\Sokoban\\images\\map2.txt");
+	//QFile file("..\\Sokoban\\images\\map2.txt");
 
 	/*for (int i = 0; i < 10; i++) {
 		for (int j = 0; j < 10; j++) {
@@ -19,7 +19,24 @@ Map::Map(QGraphicsItem *parent) :QObject(), QGraphicsRectItem(parent) {
 	}*/
 
 	std::fstream plikMacierz;
-	plikMacierz.open("D:\\Piotr\\MVS\\c++\\c++ QT\\Sokoban\\Sokoban\\images\\map1.txt", std::ios::in);
+	//plikMacierz.open("..\\Sokoban\\images\\map1.txt", std::ios::in);
+	plikMacierz.open("..\\Sokoban\\images\\map1.txt", std::ios::in);
+	//plikMacierz.open(":/map1.txt", std::ios::in);
+
+	/*QString fileName(":/images/map1.txt");
+	QFile file(fileName);
+	if (!file.open(QIODevice::ReadOnly)) {
+		QMessageBox::information(game, "", "Error");
+	}
+	else {
+		while (!file.exists()) {
+			for (int i = 0; i < 10; i++) {
+				for (int j = 0; j < 10; j++) {
+					plikMacierz >> mapa[i][j];
+				}
+			}
+		}
+	}*/
 
 	if (!plikMacierz.good()) {
 		//std::cerr << "Nie mozna otworzyc pliku, lub nie istnieje\n";
@@ -98,7 +115,7 @@ Map::Map(QGraphicsItem *parent) :QObject(), QGraphicsRectItem(parent) {
 }
 
 Map::Map(QGraphicsItem *parent, int val) :QObject(), QGraphicsRectItem(parent) {
-	//QFile file("D:\\Piotr\\MVS\\c++\\c++ QT\\Sokoban\\Sokoban\\images\\map2.txt");
+	//QFile file("..\\Sokoban\\images\\map2.txt");
 
 	/*for (int i = 0; i < 10; i++) {
 		for (int j = 0; j < 10; j++) {
@@ -108,17 +125,17 @@ Map::Map(QGraphicsItem *parent, int val) :QObject(), QGraphicsRectItem(parent) {
 
 	std::fstream plikMacierz;
 
-	QString filename1 = "D:\\Piotr\\MVS\\c++\\c++ QT\\Sokoban\\Sokoban\\images\\map1.txt";
-	QString filename2 = "D:\\Piotr\\MVS\\c++\\c++ QT\\Sokoban\\Sokoban\\images\\map2.txt";
+	QString filename1 = "..\\Sokoban\\images\\map1.txt";
+	QString filename2 = "..\\Sokoban\\images\\map2.txt";
 	//QString result = filename + strLvl;
 
 	
 
-	//plikMacierz.open("D:\\Piotr\\MVS\\c++\\c++ QT\\Sokoban\\Sokoban\\images\\map1.txt",std::ios::in);
+	//plikMacierz.open("..\\Sokoban\\images\\map1.txt",std::ios::in);
 	//plikMacierz.open(result,std::ios::in);
 
-	val == 1 ? plikMacierz.open("D:\\Piotr\\MVS\\c++\\c++ QT\\Sokoban\\Sokoban\\images\\map1.txt", std::ios::in) :
-		plikMacierz.open("D:\\Piotr\\MVS\\c++\\c++ QT\\Sokoban\\Sokoban\\images\\map2.txt", std::ios::in);
+	val == 1 ? plikMacierz.open("..\\Sokoban\\images\\map1.txt", std::ios::in) :
+		plikMacierz.open("..\\Sokoban\\images\\map2.txt", std::ios::in);
 
 	if (!plikMacierz.good()) {
 		//std::cerr << "Nie mozna otworzyc pliku, lub nie istnieje\n";

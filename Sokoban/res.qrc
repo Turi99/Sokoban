@@ -4,5 +4,7 @@
         <file>images/brown.png</file>
         <file>images/coin.png</file>
         <file>images/white.png</file>
+        <file>images/map1.txt</file>
+        <file>images/map2.txt</file>
     </qresource>
 </RCC>

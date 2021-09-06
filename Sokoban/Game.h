@@ -19,6 +19,7 @@ public:
 	void menuToLevel();
 	void menuToSelectLvl();
 	void selectLvlToMenu();
+	void selectLvlToLevel();
 };
 
 #endif // !GAME_H

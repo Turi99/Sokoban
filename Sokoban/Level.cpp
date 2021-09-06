@@ -4,7 +4,7 @@
 
 extern Game *game;
 
-Level::Level(QGraphicsItem *parent): QObject(), QGraphicsRectItem(parent) {
+Level::Level(QGraphicsItem *parent): /*QObject(),*/ QGraphicsRectItem(parent) {
 	// tworzenie mapy i reszty rzeczy
 	levelMap = new QGraphicsRectItem(this);
 	levelMap->setTransformOriginPoint(0, 0);
@@ -12,6 +12,12 @@ Level::Level(QGraphicsItem *parent): QObject(), QGraphicsRectItem(parent) {
 	levelMap->setFlag(QGraphicsItem::ItemIsFocusable);
 	levelMap->setFocus();
 	levelMap->setBrush(QColor(Qt::gray));
+	createLevel(1);
+
+}
+
+Level::Level(QGraphicsItem *parent, int nrLevel) : QGraphicsRectItem(parent), levelNumber(nrLevel) {
+	//
 }
 
 void Level::createLevel(int val){
@@ -19,8 +25,14 @@ void Level::createLevel(int val){
 	map = new Map(levelMap);
 
 	player = new Player(levelMap);
+
+	coinCount = new QGraphicsTextItem(levelMap);
+	coinCount->setPos(540, 20);
+	coinCount->setPlainText("Coin counts: " + QString::number(map->getCoinCount()));
 }
 
 void Level::keyPressEvent(QKeyEvent *event){
-	// klikanie klawiszy 
+	if (event->key() == Qt::Key_Escape) {
+		//exit(EXIT_SUCCESS);
+	}
 }
