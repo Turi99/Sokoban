@@ -22,7 +22,18 @@ Player::Player(QGraphicsItem *parent) :QObject(), QGraphicsRectItem(parent) {
 void Player::keyPressEvent(QKeyEvent *event){
 	
 	if (event->key() == Qt::Key_Escape) {
-		QMessageBox::information(game, "", "escape");
+		//QMessageBox::information(game, "", "escape");
+		if (game->level->gameMenu == nullptr) {
+			game->gameMenu = new GameMenu();
+			game->scene->addItem(game->gameMenu);
+			//game->level->gameMenu = new GameMenu(game->level);
+			//QMessageBox::information(game, "", "jest");
+		}
+		/*else {
+			delete game->level->gameMenu;
+			game->level->gameMenu = nullptr;
+			QMessageBox::information(game, "", "niema");
+		}*/
 	}
 	else {
 		int posX = pos().x();

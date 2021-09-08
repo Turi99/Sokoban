@@ -7,7 +7,6 @@ extern Game *game;
 
 MainMenu::MainMenu(QGraphicsItem *parent) : /*QObject(),*/ QGraphicsRectItem(parent) {
 	main = new QGraphicsRectItem(this);
-	main = new QGraphicsRectItem(this);
 	main->setTransformOriginPoint(0, 0);
 	main->setRect(0, 0, 620, 520); 
 	main->setFlag(QGraphicsItem::ItemIsFocusable);

@@ -6,6 +6,7 @@
 #include <qgraphicsitem.h>
 #include "Map.h"
 #include "Player.h"
+#include "GameMenu.h"
 
 class Level: /*public QObject,*/ public QGraphicsRectItem {
 	//Q_OBJECT
@@ -22,6 +23,8 @@ public:
 	Player *player = nullptr;
 
 	QGraphicsTextItem *coinCount;
+
+	GameMenu *gameMenu = nullptr;
 
 protected:
 	void keyPressEvent(QKeyEvent *event) override;

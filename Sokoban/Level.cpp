@@ -33,6 +33,10 @@ void Level::createLevel(int val){
 
 void Level::keyPressEvent(QKeyEvent *event){
 	if (event->key() == Qt::Key_Escape) {
-		//exit(EXIT_SUCCESS);
+		if (gameMenu) {
+			delete gameMenu;
+			gameMenu = nullptr;
+		}
+		//gameMenu = new GameMenu(levelMap);
 	}
 }

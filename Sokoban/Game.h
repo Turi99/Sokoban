@@ -5,6 +5,7 @@
 #include "MainMenu.h"
 #include "SelectLevel.h"
 #include "Level.h"
+#include "GameMenu.h"
 
 class Game : public QGraphicsView {
 	Q_OBJECT
@@ -15,6 +16,7 @@ public:
 	MainMenu *mainMenu = nullptr;
 	SelectLevel *selectLevel = nullptr;
 	Level *level = nullptr;
+	GameMenu *gameMenu = nullptr;
 
 	void menuToLevel();
 	void menuToSelectLvl();
