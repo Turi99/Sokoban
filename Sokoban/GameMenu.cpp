@@ -13,6 +13,12 @@ GameMenu::GameMenu(QGraphicsItem *parent): QGraphicsRectItem(parent) {
 	gameMenu->setFocus();
 	gameMenu->setBrush(QColor(Qt::red));
 
+	t1 = new QGraphicsTextItem(gameMenu);
+	t1->setTransformOriginPoint(0, 0);
+	t1->setFlag(QGraphicsItem::ItemIsFocusable);
+	t1->setPos(60, 30);
+	t1->setPlainText("Quit");
+
 }
 
 void GameMenu::keyPressEvent(QKeyEvent *event){

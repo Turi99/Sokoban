@@ -26,9 +26,12 @@ public:
 
 	GameMenu *gameMenu = nullptr;
 
+	void check();
+
 protected:
 	void keyPressEvent(QKeyEvent *event) override;
 
 };
+
 
 #endif // !LEVEL_H

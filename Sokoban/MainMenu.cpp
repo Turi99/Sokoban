@@ -13,7 +13,7 @@ MainMenu::MainMenu(QGraphicsItem *parent) : /*QObject(),*/ QGraphicsRectItem(par
 	main->setFocus();
 	main->setBrush(QColor(Qt::green));
 
-	test = new QGraphicsTextItem(main);
+	test = new QGraphicsTextItem(main);	
 	test->setPos(250, 200);
 	test->setPlainText("Play");
 

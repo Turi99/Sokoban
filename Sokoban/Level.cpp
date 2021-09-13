@@ -29,14 +29,43 @@ void Level::createLevel(int val){
 	coinCount = new QGraphicsTextItem(levelMap);
 	coinCount->setPos(540, 20);
 	coinCount->setPlainText("Coin counts: " + QString::number(map->getCoinCount()));
+
+	gameMenu = new GameMenu(levelMap);
+	gameMenu->hide();
+
 }
 
 void Level::keyPressEvent(QKeyEvent *event){
 	if (event->key() == Qt::Key_Escape) {
-		if (gameMenu) {
+		if (gameMenu == nullptr) {
+			//gameMenu = new GameMenu();
+			//game->scene->addItem(game->gameMenu);
+			gameMenu = new GameMenu(levelMap);
+		}
+		else {
 			delete gameMenu;
 			gameMenu = nullptr;
 		}
-		//gameMenu = new GameMenu(levelMap);
+
+		if (!gameMenu->isVisible()) {
+			gameMenu->show();
+		}
+		else {
+			gameMenu->hide();
+		}
+
 	}
+	if (event->key() == Qt::Key_A) {
+		player->moveLeft();
+	}
+	else if (event->key() == Qt::Key_D) {
+		player->moveRight();
+	}
+	else if (event->key() == Qt::Key_W) {
+		player->moveUp();
+	}
+	else if (event->key() == Qt::Key_S) {
+		player->moveDown();
+	}
+
 }
