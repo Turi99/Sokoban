@@ -50,10 +50,10 @@ int MainMenu::getCursorPosition(){
 }
 
 void MainMenu::keyPressEvent(QKeyEvent *event){
-	if (event->key() == Qt::Key_Up) {
+	if (event->key() == Qt::Key_Up || event->key() == Qt::Key_W) {
 		setCursorPosition(-1);
 	}
-	else if (event->key() == Qt::Key_Down) {
+	else if (event->key() == Qt::Key_Down || event->key() == Qt::Key_S) {
 		setCursorPosition(1);
 	}
 	else if (event->key() == Qt::Key_Escape) {
@@ -65,6 +65,9 @@ void MainMenu::keyPressEvent(QKeyEvent *event){
 		}
 		else if (cursorPosition == 2) {
 			game->menuToSelectLvl();
+		}
+		else if(cursorPosition == 3){
+			exit(EXIT_SUCCESS);
 		}
 	}
 }

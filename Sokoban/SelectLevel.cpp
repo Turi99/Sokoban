@@ -28,6 +28,12 @@ SelectLevel::SelectLevel(QGraphicsItem *parent) : /*QObject(),*/ QGraphicsRectIt
 	lvl2 = new QGraphicsTextItem(selectLevelScene);
 	lvl2->setPos(80, 137);
 	lvl2->setPlainText("Level 2");
+
+	iconLevel = new QGraphicsPixmapItem(selectLevelScene);
+	iconLevel->setPos(300, 50);
+	iconLevel->setPixmap(QPixmap(":/images/level1.png"));
+	iconLevel->setScale(0.5);
+	//:/images/level1.png
 }
 
 void SelectLevel::setCursorPosition(int val){
@@ -46,10 +52,10 @@ int SelectLevel::getCursorPosition(){
 }
 
 void SelectLevel::keyPressEvent(QKeyEvent *event) {
-	if (event->key() == Qt::Key_Up) {
+	if (event->key() == Qt::Key_Up || event->key() == Qt::Key_W) {
 		setCursorPosition(-1);
 	}
-	else if (event->key() == Qt::Key_Down) {
+	else if (event->key() == Qt::Key_Down || event->key() == Qt::Key_S) {
 		setCursorPosition(1);
 	}
 	else if (event->key() == Qt::Key_1) {
@@ -60,10 +66,16 @@ void SelectLevel::keyPressEvent(QKeyEvent *event) {
 		game->selectLvlToMenu();
 	}
 	else if (event->key() == Qt::Key_Space) {
-		game->selectLvlToLevel();
+		game->selectLvlToLevel(cursorPosition);
 	}
 }
 
 void SelectLevel::setArrow(int val){
 	arrow->setRect(20, 80 + (55 * (val - 1)), 30, 30);
+	if (val == 1) {
+		iconLevel->setPixmap(QPixmap(":/images/level1.png"));
+	}
+	else if(val == 2){
+		iconLevel->setPixmap(QPixmap(":/images/level2.png"));
+	}
 }

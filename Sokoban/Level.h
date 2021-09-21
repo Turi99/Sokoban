@@ -18,7 +18,7 @@ public:
 
 	int levelNumber = 1;
 
-	QGraphicsRectItem *levelMap;
+	QGraphicsRectItem *levelMap = nullptr;
 	Map *map = nullptr;
 	Player *player = nullptr;
 
@@ -26,7 +26,7 @@ public:
 
 	GameMenu *gameMenu = nullptr;
 
-	void check();
+	//void check();
 
 protected:
 	void keyPressEvent(QKeyEvent *event) override;

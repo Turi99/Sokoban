@@ -21,7 +21,8 @@ public:
 	void menuToLevel();
 	void menuToSelectLvl();
 	void selectLvlToMenu();
-	void selectLvlToLevel();
+	void selectLvlToLevel(int val);
+	void levelToMenu();
 };
 
 #endif // !GAME_H

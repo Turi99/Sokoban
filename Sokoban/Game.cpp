@@ -40,11 +40,18 @@ void Game::selectLvlToMenu() {
 	scene->addItem(mainMenu);
 }
 
-void Game::selectLvlToLevel() {
+void Game::selectLvlToLevel(int val) {
 	delete selectLevel;
 	selectLevel = nullptr;
-	level = new Level();
+	level = new Level(0,val);
 	scene->addItem(level);
+}
+
+void Game::levelToMenu(){
+	delete level;
+	level = nullptr;
+	mainMenu = new MainMenu();
+	scene->addItem(mainMenu);
 }
 
 ///////////////////

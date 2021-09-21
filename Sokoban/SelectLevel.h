@@ -19,6 +19,7 @@ protected:
 private:
 	QGraphicsTextItem *text1, *lvl1, *lvl2;
 	QGraphicsRectItem *arrow;
+	QGraphicsPixmapItem *iconLevel;
 
 	int cursorPosition = 1;
 	void setArrow(int val);

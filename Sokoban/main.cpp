@@ -7,6 +7,7 @@ Game *game;
 int main(int argc, char *argv[]) {
 	//QThread::sleep(15);
 	QApplication a(argc, argv);
+	//QApplication::focusWidget();
 
 	game = new Game();
 	game->show();
