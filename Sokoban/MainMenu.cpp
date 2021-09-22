@@ -13,17 +13,21 @@ MainMenu::MainMenu(QGraphicsItem *parent) : /*QObject(),*/ QGraphicsRectItem(par
 	main->setFocus();
 	main->setBrush(QColor(Qt::green));
 
-	test = new QGraphicsTextItem(main);	
-	test->setPos(250, 200);
-	test->setPlainText("Play");
+	playTxt = new QGraphicsTextItem(main);	
+	playTxt->setPos(250, 200);
+	playTxt->setPlainText("Play");
 
-	test2 = new QGraphicsTextItem(main);
-	test2->setPos(250, 260);
-	test2->setPlainText("Select level");
+	selectLevelTxt = new QGraphicsTextItem(main);
+	selectLevelTxt->setPos(250, 260);
+	selectLevelTxt->setPlainText("Select level");
 
-	test3 = new QGraphicsTextItem(main);
-	test3->setPos(250, 320);
-	test3->setPlainText("Quit");
+	settingTxt = new QGraphicsTextItem(main);
+	settingTxt->setPos(250, 320);
+	settingTxt->setPlainText("Settings");
+
+	quitTxt = new QGraphicsTextItem(main);
+	quitTxt->setPos(250, 380);
+	quitTxt->setPlainText("Quit");
 
 	arrow1 = new QGraphicsRectItem(main);
 	arrow1->setRect(200, 200, 30, 30);
@@ -36,11 +40,11 @@ MainMenu::MainMenu(QGraphicsItem *parent) : /*QObject(),*/ QGraphicsRectItem(par
 
 void MainMenu::setCursorPosition(int val) {
 	cursorPosition += val;
-	if (cursorPosition > 3) {
+	if (cursorPosition > 4) {
 		cursorPosition = 1;
 	}
 	else if (cursorPosition < 1) {
-		cursorPosition = 3;
+		cursorPosition = 4;
 	}
 	setArrow(cursorPosition);
 }
@@ -66,7 +70,10 @@ void MainMenu::keyPressEvent(QKeyEvent *event){
 		else if (cursorPosition == 2) {
 			game->menuToSelectLvl();
 		}
-		else if(cursorPosition == 3){
+		else if (cursorPosition == 3) {
+			game->settingsToMenu();
+		}
+		else if(cursorPosition == 4){
 			exit(EXIT_SUCCESS);
 		}
 	}

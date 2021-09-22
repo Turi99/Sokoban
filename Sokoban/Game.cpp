@@ -54,6 +54,14 @@ void Game::levelToMenu(){
 	scene->addItem(mainMenu);
 }
 
+void Game::menuToSettings(){
+	//
+}
+
+void Game::settingsToMenu(){
+	//
+}
+
 ///////////////////
 
 

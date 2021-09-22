@@ -23,6 +23,8 @@ public:
 	void selectLvlToMenu();
 	void selectLvlToLevel(int val);
 	void levelToMenu();
+	void menuToSettings();
+	void settingsToMenu();
 };
 
 #endif // !GAME_H

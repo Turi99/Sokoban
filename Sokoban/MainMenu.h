@@ -21,7 +21,7 @@ private:
 	void setArrow(int val);
 
 
-	QGraphicsTextItem *test, *test2, *test3;
+	QGraphicsTextItem *playTxt, *selectLevelTxt, *settingTxt, *quitTxt;
 	QGraphicsRectItem *arrow1, *arrow2;
 };
 
