@@ -19,6 +19,25 @@ Player::Player(QGraphicsItem *parent) :/*QObject(),*/ QGraphicsRectItem(parent) 
 	setPos(50, 50);
 }
 
+Player::Player(QGraphicsItem *parent, int val) :/*QObject(),*/ QGraphicsRectItem(parent) {
+	rectangle = new QGraphicsRectItem(this);
+	rectangle->setTransformOriginPoint(0, 0);
+	rectangle->setRect(0, 0, 40, 40);
+	rectangle->setFlag(QGraphicsItem::ItemIsFocusable);
+	rectangle->setFocus();
+	rectangle->setBrush(QColor(Qt::green));
+	rectangle->setPos(5, 5);
+	if (val == 1 || val == 2) {
+		setPos(50, 50);
+	}
+	else if(val == 3){
+		setPos(300, 200);
+	}
+	else if (val == 4) {
+		setPos(100, 100);
+	}
+}
+
 /*void Player::keyPressEvent(QKeyEvent *event){
 	
 	if (event->key() == Qt::Key_Escape) {

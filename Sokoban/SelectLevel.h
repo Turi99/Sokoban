@@ -17,7 +17,7 @@ protected:
 	void keyPressEvent(QKeyEvent *event) override;
 
 private:
-	QGraphicsTextItem *text1, *lvl1, *lvl2;
+	QGraphicsTextItem *text1, *lvl1, *lvl2, *lvl3, *lvl4;
 	QGraphicsRectItem *arrow;
 	QGraphicsPixmapItem *iconLevel;
 

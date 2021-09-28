@@ -10,6 +10,7 @@ class Player: /*public QObject,*/ public QGraphicsRectItem{
 	//Q_OBJECT
 public:
 	Player(QGraphicsItem *parent = 0);
+	Player(QGraphicsItem *parent, int val);
 	//void keyPressEvent(QKeyEvent *event);
 
 	QGraphicsRectItem *rectangle;

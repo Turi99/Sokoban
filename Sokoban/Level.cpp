@@ -39,10 +39,19 @@ void Level::createLevel(int val){
 		coinCount->setPlainText("Coin counts: " + QString::number(map->getCoinCount()));
 
 	}
-	else {
+	else if(val == 2) {
 		map = new Map(levelMap, 2);
 
 		player = new Player(levelMap);
+
+		coinCount = new QGraphicsTextItem(levelMap);
+		coinCount->setPos(540, 20);
+		coinCount->setPlainText("Coin counts: " + QString::number(map->getCoinCount()));
+	}
+	else if (val == 3 || val == 4) {
+		map = new Map(levelMap, val);
+
+		player = new Player(levelMap, val);
 
 		coinCount = new QGraphicsTextItem(levelMap);
 		coinCount->setPos(540, 20);

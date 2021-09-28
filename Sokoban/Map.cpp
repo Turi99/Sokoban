@@ -125,8 +125,14 @@ Map::Map(QGraphicsItem *parent, int val) :QObject(), QGraphicsRectItem(parent) {
 
 	std::fstream plikMacierz;
 
-	QString filename1 = "..\\Sokoban\\images\\map1.txt";
-	QString filename2 = "..\\Sokoban\\images\\map2.txt";
+	//QString filename1 = "..\\Sokoban\\images\\map1.txt";
+	//QString filename2 = "..\\Sokoban\\images\\map2.txt";
+	//QString filename3 = "..\\Sokoban\\images\\map3.txt";
+
+	std::string filename1 = "..\\Sokoban\\images\\map1.txt";
+	std::string filename2 = "..\\Sokoban\\images\\map2.txt";
+	std::string filename3 = "..\\Sokoban\\images\\map3.txt";
+
 	//QString result = filename + strLvl;
 
 	
@@ -134,8 +140,25 @@ Map::Map(QGraphicsItem *parent, int val) :QObject(), QGraphicsRectItem(parent) {
 	//plikMacierz.open("..\\Sokoban\\images\\map1.txt",std::ios::in);
 	//plikMacierz.open(result,std::ios::in);
 
-	val == 1 ? plikMacierz.open("..\\Sokoban\\images\\map1.txt", std::ios::in) :
+	/*val == 1 ? plikMacierz.open("..\\Sokoban\\images\\map1.txt", std::ios::in) :
+		plikMacierz.open("..\\Sokoban\\images\\map2.txt", std::ios::in);*/
+
+	if (val == 1) {
+		//plikMacierz.open(filename1, std::ios::in);
+		plikMacierz.open("..\\Sokoban\\images\\map1.txt", std::ios::in);
+	}
+	else if (val == 2) {
+		//plikMacierz.open(filename2, std::ios::in);
 		plikMacierz.open("..\\Sokoban\\images\\map2.txt", std::ios::in);
+	}
+	else if (val == 3) {
+		//plikMacierz.open(filename3, std::ios::in);
+		plikMacierz.open("..\\Sokoban\\images\\map3.txt", std::ios::in);
+	}
+	else if (val == 4) {
+		//plikMacierz.open(filename3, std::ios::in);
+		plikMacierz.open("..\\Sokoban\\images\\map4.txt", std::ios::in);
+	}
 
 	if (!plikMacierz.good()) {
 		//std::cerr << "Nie mozna otworzyc pliku, lub nie istnieje\n";

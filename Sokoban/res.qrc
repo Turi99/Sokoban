@@ -8,5 +8,7 @@
         <file>images/map2.txt</file>
         <file>images/level1.png</file>
         <file>images/level2.png</file>
+        <file>images/map3.txt</file>
+        <file>images/map4.txt</file>
     </qresource>
 </RCC>

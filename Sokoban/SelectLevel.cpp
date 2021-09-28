@@ -29,6 +29,14 @@ SelectLevel::SelectLevel(QGraphicsItem *parent) : /*QObject(),*/ QGraphicsRectIt
 	lvl2->setPos(80, 137);
 	lvl2->setPlainText("Level 2");
 
+	lvl3 = new QGraphicsTextItem(selectLevelScene);
+	lvl3->setPos(80, 192);
+	lvl3->setPlainText("Level 3");
+
+	lvl4 = new QGraphicsTextItem(selectLevelScene);
+	lvl4->setPos(80, 247);
+	lvl4->setPlainText("Level 4");
+
 	iconLevel = new QGraphicsPixmapItem(selectLevelScene);
 	iconLevel->setPos(300, 50);
 	iconLevel->setPixmap(QPixmap(":/images/level1.png"));
@@ -38,11 +46,11 @@ SelectLevel::SelectLevel(QGraphicsItem *parent) : /*QObject(),*/ QGraphicsRectIt
 
 void SelectLevel::setCursorPosition(int val){
 	cursorPosition += val;
-	if (cursorPosition > 2) {
+	if (cursorPosition > 4) {
 		cursorPosition = 1;
 	}
 	else if (cursorPosition < 1) {
-		cursorPosition = 2;
+		cursorPosition = 4;
 	}
 	setArrow(cursorPosition);
 }
@@ -78,5 +86,9 @@ void SelectLevel::setArrow(int val){
 	else if(val == 2){
 		//iconLevel->setPixmap(QPixmap());
 		iconLevel->setPixmap(QPixmap(":/images/level2.png"));
+	}
+	else if (val == 3) {
+		//iconLevel->setPixmap(QPixmap());
+		//iconLevel->setPixmap(QPixmap(":/images/level2.png"));
 	}
 }
