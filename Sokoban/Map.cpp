@@ -60,10 +60,11 @@ Map::Map(QGraphicsItem *parent) :QObject(), QGraphicsRectItem(parent) {
 			//mapka[i][j]->setFlag(QGraphicsItem::ItemIsFocusable);
 			//mapka[i][j]->setFocus();
 			if (mapa[i][j] == 0) {
+				//mapka[j][i]->setBrush(QPixmap(":/images/Wall2.png"));
 				mapka[j][i]->setBrush(QPixmap(":/images/white.png"));
 			}
 			else if (mapa[i][j] == 1) {
-				mapka[j][i]->setBrush(QPixmap(":/images/black.png"));
+				mapka[j][i]->setBrush(QPixmap(":/images/Wall.png"));
 			}
 			else if (mapa[i][j] == 2) {
 				mapka[j][i]->setBrush(QPixmap(":/images/coin.png"));
@@ -182,10 +183,11 @@ Map::Map(QGraphicsItem *parent, int val) :QObject(), QGraphicsRectItem(parent) {
 			//mapka[i][j]->setFlag(QGraphicsItem::ItemIsFocusable);
 			//mapka[i][j]->setFocus();
 			if (mapa[i][j] == 0){
+				//mapka[j][i]->setBrush(QPixmap(":/images/Wall2.png"));
 				mapka[j][i]->setBrush(QPixmap(":/images/white.png"));
 			}
 			else if(mapa[i][j] == 1){
-				mapka[j][i]->setBrush(QPixmap(":/images/black.png"));
+				mapka[j][i]->setBrush(QPixmap(":/images/Wall.png"));
 			}
 			else if (mapa[i][j] == 2) {
 				mapka[j][i]->setBrush(QPixmap(":/images/coin.png"));

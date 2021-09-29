@@ -10,5 +10,12 @@
         <file>images/level2.png</file>
         <file>images/map3.txt</file>
         <file>images/map4.txt</file>
+        <file>images/gif1.gif</file>
+        <file>images/PlayerLeft.png</file>
+        <file>images/PlayerRight.png</file>
+        <file>images/PlayerUp.png</file>
+        <file>images/PlayerDown.png</file>
+        <file>images/Wall.png</file>
+        <file>images/Wall2.png</file>
     </qresource>
 </RCC>

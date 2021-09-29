@@ -11,22 +11,26 @@ extern Game *game;
 Player::Player(QGraphicsItem *parent) :/*QObject(),*/ QGraphicsRectItem(parent) {
 	rectangle = new QGraphicsRectItem(this);
 	rectangle->setTransformOriginPoint(0, 0);
-	rectangle->setRect(0, 0, 40, 40);
+	//rectangle->setRect(0, 0, 40, 40);
+	rectangle->setRect(0, 0, 50, 50);
 	rectangle->setFlag(QGraphicsItem::ItemIsFocusable);
 	rectangle->setFocus();
-	rectangle->setBrush(QColor(Qt::green));
-	rectangle->setPos(5, 5);
+	//rectangle->setBrush(QColor(Qt::green));
+	rectangle->setBrush(QPixmap(":/images/gif1.gif"));
+	//rectangle->setPos(5, 5);
 	setPos(50, 50);
 }
 
 Player::Player(QGraphicsItem *parent, int val) :/*QObject(),*/ QGraphicsRectItem(parent) {
 	rectangle = new QGraphicsRectItem(this);
 	rectangle->setTransformOriginPoint(0, 0);
-	rectangle->setRect(0, 0, 40, 40);
+	//rectangle->setRect(0, 0, 40, 40);
+	rectangle->setRect(0, 0, 50, 50);
 	rectangle->setFlag(QGraphicsItem::ItemIsFocusable);
 	rectangle->setFocus();
-	rectangle->setBrush(QColor(Qt::green));
-	rectangle->setPos(5, 5);
+	//rectangle->setBrush(QColor(Qt::green));
+	rectangle->setBrush(QPixmap(":/images/PlayerRight.png"));
+	//rectangle->setPos(5, 5);
 	if (val == 1 || val == 2) {
 		setPos(50, 50);
 	}
@@ -153,6 +157,10 @@ void Player::moveLeft(){
 		setPos(x() - 50, y());
 	}
 
+	rectangle->setBrush(QPixmap(":/images/PlayerLeft.png"));
+
+	//rectangle->setTransformOriginPoint(0, 180);
+
 	/*game->level->coinCount->setPlainText("Coin counts: " + QString::number(game->level->map->getCoinCount()));
 
 	if (game->level->map->getCoinCount() == 0) {
@@ -180,6 +188,8 @@ void Player::moveRight(){
 		setPos(x() + 50, y());
 	}
 
+	rectangle->setBrush(QPixmap(":/images/PlayerRight.png"));
+	
 	/*game->level->coinCount->setPlainText("Coin counts: " + QString::number(game->level->map->getCoinCount()));
 
 	if (game->level->map->getCoinCount() == 0) {
@@ -207,6 +217,8 @@ void Player::moveUp(){
 		setPos(x(), y() - 50);
 	}
 
+	rectangle->setBrush(QPixmap(":/images/PlayerUp.png"));
+
 	/*game->level->coinCount->setPlainText("Coin counts: " + QString::number(game->level->map->getCoinCount()));
 
 	if (game->level->map->getCoinCount() == 0) {
@@ -233,6 +245,8 @@ void Player::moveDown(){
 	else if (game->level->map->mapa[posY / 50 + 1][posX / 50 + 0] != 1) {
 		setPos(x(), y() + 50);
 	}
+
+	rectangle->setBrush(QPixmap(":/images/PlayerDown.png"));
 
 	/*game->level->coinCount->setPlainText("Coin counts: " + QString::number(game->level->map->getCoinCount()));
 
