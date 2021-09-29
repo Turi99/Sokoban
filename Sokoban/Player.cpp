@@ -153,11 +153,11 @@ void Player::moveLeft(){
 		setPos(x() - 50, y());
 	}
 
-	game->level->coinCount->setPlainText("Coin counts: " + QString::number(game->level->map->getCoinCount()));
+	/*game->level->coinCount->setPlainText("Coin counts: " + QString::number(game->level->map->getCoinCount()));
 
 	if (game->level->map->getCoinCount() == 0) {
 		game->level->coinCount->setPlainText("Coin counts: " + QString::number(game->level->map->getCoinCount()) + "\n" + "Koniec poziomu");
-	}
+	}*/
 
 }
 
@@ -180,11 +180,11 @@ void Player::moveRight(){
 		setPos(x() + 50, y());
 	}
 
-	game->level->coinCount->setPlainText("Coin counts: " + QString::number(game->level->map->getCoinCount()));
+	/*game->level->coinCount->setPlainText("Coin counts: " + QString::number(game->level->map->getCoinCount()));
 
 	if (game->level->map->getCoinCount() == 0) {
 		game->level->coinCount->setPlainText("Coin counts: " + QString::number(game->level->map->getCoinCount()) + "\n" + "Koniec poziomu");
-	}
+	}*/
 
 }
 
@@ -207,11 +207,11 @@ void Player::moveUp(){
 		setPos(x(), y() - 50);
 	}
 
-	game->level->coinCount->setPlainText("Coin counts: " + QString::number(game->level->map->getCoinCount()));
+	/*game->level->coinCount->setPlainText("Coin counts: " + QString::number(game->level->map->getCoinCount()));
 
 	if (game->level->map->getCoinCount() == 0) {
 		game->level->coinCount->setPlainText("Coin counts: " + QString::number(game->level->map->getCoinCount()) + "\n" + "Koniec poziomu");
-	}
+	}*/
 
 }
 
@@ -234,11 +234,22 @@ void Player::moveDown(){
 		setPos(x(), y() + 50);
 	}
 
-	game->level->coinCount->setPlainText("Coin counts: " + QString::number(game->level->map->getCoinCount()));
+	/*game->level->coinCount->setPlainText("Coin counts: " + QString::number(game->level->map->getCoinCount()));
 
 	if (game->level->map->getCoinCount() == 0) {
 		game->level->coinCount->setPlainText("Coin counts: " + QString::number(game->level->map->getCoinCount()) + "\n" + "Koniec poziomu");
-	}
+		//game->level->levelNumber++;
+
+		//if (game->level->levelNumber <= 4) {
+			//game->level->nextLevel(game->level->levelNumber);
+		//}
+
+		//delete game->level->player;
+		//delete game->level->map;
+
+		//game->level->createLevel(game->level->levelNumber); // = new Level(0, game->level->levelNumber);
+
+	}*/
 
 }
 	

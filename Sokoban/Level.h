@@ -15,8 +15,13 @@ public:
 	Level(QGraphicsItem *parent = 0);
 	Level(QGraphicsItem *parent, int nrLevel); // ?? Tworzenie levelu poprzez wybow z "Wybierz poziom"
 	void createLevel(int val);
+	void nextLevel(int val);
+
+	void changeItemPosition();
+	void checkCoinCount();
 
 	int levelNumber = 1;
+	int countOfLevel = 4;
 
 	QGraphicsRectItem *levelMap = nullptr;
 	Map *map = nullptr;

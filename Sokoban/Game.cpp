@@ -4,7 +4,7 @@
 
 
 Game::Game(QWidget *parent) : QGraphicsView(parent) {
-	QEvent::ApplicationActivate; //to jest stare,jak cos
+	QEvent::ApplicationActivate; //to jest stary sposob
 
 	scene = new QGraphicsScene(this);
 	scene->setSceneRect(0, 0, 620, 520);
@@ -22,7 +22,7 @@ Game::Game(QWidget *parent) : QGraphicsView(parent) {
 void Game::menuToLevel() {
 	delete mainMenu;
 	mainMenu = nullptr;
-	level = new Level();
+	level = new Level(0,1);
 	scene->addItem(level);
 }
 

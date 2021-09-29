@@ -63,6 +63,27 @@ void Level::createLevel(int val){
 
 }
 
+void Level::nextLevel(int val){
+	delete player;
+	delete map;
+
+	delete coinCount;
+
+	game->level->createLevel(val);
+}
+
+void Level::changeItemPosition(){
+	//
+}
+
+void Level::checkCoinCount(){
+	coinCount->setPlainText("Coin counts: " + QString::number(map->getCoinCount()));
+
+	if (map->getCoinCount() == 0) {
+		coinCount->setPlainText("Coin counts: " + QString::number(map->getCoinCount()) + "\n" + "Koniec poziomu");
+	}
+}
+
 void Level::keyPressEvent(QKeyEvent *event){
 	/*if (event->key() == Qt::Key_Escape) {
 		if (gameMenu == nullptr) {
@@ -85,18 +106,30 @@ void Level::keyPressEvent(QKeyEvent *event){
 	}*/
 	if (event->key() == Qt::Key_A) {
 		player->moveLeft();
+		checkCoinCount();
 	}
 	else if (event->key() == Qt::Key_D) {
 		player->moveRight();
+		checkCoinCount();
 	}
 	else if (event->key() == Qt::Key_W) {
 		player->moveUp();
+		checkCoinCount();
 	}
 	else if (event->key() == Qt::Key_S) {
 		player->moveDown();
+		checkCoinCount();
 	}
 	if (event->key() == Qt::Key_Escape) {
 		game->levelToMenu();
+	}
+	if (event->key() == Qt::Key_Space) {
+		if (map->getCoinCount() == 0) {
+			levelNumber++;
+			if (levelNumber <= countOfLevel) {
+				nextLevel(levelNumber);
+			}
+		}
 	}
 
 }
