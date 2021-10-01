@@ -7,6 +7,9 @@
 #include "Map.h"
 #include "Player.h"
 #include "GameMenu.h"
+#include "Box.h"
+#include "Point.h"
+#include <vector>
 
 class Level: /*public QObject,*/ public QGraphicsRectItem {
 	//Q_OBJECT
@@ -26,6 +29,11 @@ public:
 	QGraphicsRectItem *levelMap = nullptr;
 	Map *map = nullptr;
 	Player *player = nullptr;
+
+	//std::vector<std::vector<std::unique_ptr<Box>>> boxs;
+	//std::vector<std::vector<Box *>> boxs(10, std::vector<Box *>(10, 0));
+	std::vector<std::vector<Box *>> boxs;
+	QList<Point *> points;
 
 	QGraphicsTextItem *coinCount;
 

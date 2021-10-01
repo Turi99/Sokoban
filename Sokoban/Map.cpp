@@ -7,6 +7,8 @@
 
 #include <qpainter.h>
 
+#include <vector>
+
 extern Game *game;
 
 Map::Map(QGraphicsItem *parent) :QObject(), QGraphicsRectItem(parent) {
@@ -53,6 +55,8 @@ Map::Map(QGraphicsItem *parent) :QObject(), QGraphicsRectItem(parent) {
 
 	for (int i = 0; i < 10; i++) {
 		for (int j = 0; j < 10; j++) {
+			//std::vector<std::unique_ptr<Box>> list;
+			//std::vector<Box *> list;
 			mapka[j][i] = new QGraphicsRectItem(this);
 			mapka[j][i]->setRect(j * 50, i * 50, 50, 50);
 			//mapka[i][j]->setTransformOriginPoint(0, 0);
@@ -71,12 +75,20 @@ Map::Map(QGraphicsItem *parent) :QObject(), QGraphicsRectItem(parent) {
 			}
 			else if (mapa[i][j] == 3) {
 				mapka[j][i]->setBrush(QPixmap(":/images/brown.png"));
+				
+				//Box *b = new Box(this, j * 50, i * 50);
+				//game->level->boxs.emplace_back(new Box(this, j * 50, i * 50));
+				//game->level->boxs.push_back(b);
+				//list.emplace_back(new Box(this, j * 50, i * 50));
+				//list.push_back(new Box(this, j * 50, i * 50));
 			}
 
 
 			/*QLabel *l = new QLabel();
 			l->setGeometry(j * 50 + 10, i * 50 + 10, 20, 20);
 			l->setText(QString::number(i)+" "+ QString::number(j));*/
+			//game->level->boxs[i].emplace_back(list);
+			//list.clear();
 		}
 	}
 	//QBrush c = mapka[0][0]->brush();
