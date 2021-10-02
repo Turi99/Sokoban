@@ -12,33 +12,10 @@
 extern Game *game;
 
 Map::Map(QGraphicsItem *parent) :QObject(), QGraphicsRectItem(parent) {
-	//QFile file("..\\Sokoban\\images\\map2.txt");
-
-	/*for (int i = 0; i < 10; i++) {
-		for (int j = 0; j < 10; j++) {
-			mapa[i][j] = 0;
-		}
-	}*/
-
 	std::fstream plikMacierz;
 	//plikMacierz.open("..\\Sokoban\\images\\map1.txt", std::ios::in);
 	plikMacierz.open("..\\Sokoban\\images\\map1.txt", std::ios::in);
 	//plikMacierz.open(":/map1.txt", std::ios::in);
-
-	/*QString fileName(":/images/map1.txt");
-	QFile file(fileName);
-	if (!file.open(QIODevice::ReadOnly)) {
-		QMessageBox::information(game, "", "Error");
-	}
-	else {
-		while (!file.exists()) {
-			for (int i = 0; i < 10; i++) {
-				for (int j = 0; j < 10; j++) {
-					plikMacierz >> mapa[i][j];
-				}
-			}
-		}
-	}*/
 
 	if (!plikMacierz.good()) {
 		//std::cerr << "Nie mozna otworzyc pliku, lub nie istnieje\n";
@@ -52,6 +29,8 @@ Map::Map(QGraphicsItem *parent) :QObject(), QGraphicsRectItem(parent) {
 			}
 		}
 	}
+
+	//std::vector<std::vector<Box *>> pudelka(10, std::vector<Box *>(10, nullptr));
 
 	for (int i = 0; i < 10; i++) {
 		for (int j = 0; j < 10; j++) {
@@ -75,56 +54,9 @@ Map::Map(QGraphicsItem *parent) :QObject(), QGraphicsRectItem(parent) {
 			}
 			else if (mapa[i][j] == 3) {
 				mapka[j][i]->setBrush(QPixmap(":/images/brown.png"));
-				
-				//Box *b = new Box(this, j * 50, i * 50);
-				//game->level->boxs.emplace_back(new Box(this, j * 50, i * 50));
-				//game->level->boxs.push_back(b);
-				//list.emplace_back(new Box(this, j * 50, i * 50));
-				//list.push_back(new Box(this, j * 50, i * 50));
 			}
-
-
-			/*QLabel *l = new QLabel();
-			l->setGeometry(j * 50 + 10, i * 50 + 10, 20, 20);
-			l->setText(QString::number(i)+" "+ QString::number(j));*/
-			//game->level->boxs[i].emplace_back(list);
-			//list.clear();
 		}
 	}
-	//QBrush c = mapka[0][0]->brush();
-	//QColor color = c.color();
-	//color.rgb();
-	/*QString str = "";
-	QString str2 = "";
-	for (int i = 0; i < 10; i++) {
-		for (int j = 0; j < 10; j++) {
-			str += QString::number(mapa[i][j])+" ";
-
-			if (mapa[i][j] == 0) {
-				//mapka[i][j]->setBrush(QPixmap(":/images/white.png"));
-				str2 += QString::number(0) + " ";
-			}
-			else if (mapa[i][j] == 1) {
-				//mapka[i][j]->setBrush(QPixmap(":/images/black.png"));
-				str2 += QString::number(1) + " ";
-			}
-			else if (mapa[i][j] == 2) {
-				//mapka[i][j]->setBrush(QPixmap(":/images/coin.png"));
-				str2 += QString::number(2) + " ";
-			}
-			else if (mapa[i][j] == 3) {
-				//mapka[i][j]->setBrush(QPixmap(":/images/brown.png"));
-				str2 += QString::number(3) + " ";
-			}
-
-			//str2 += QString::number(mapka[i][j])+" ";
-		}
-		str += "\n";
-		str2 += "\n";
-	}
-	str += "\n";
-	str += str2;*/
-	//QMessageBox::information(game, "tytul", str);
 }
 
 Map::Map(QGraphicsItem *parent, int val) :QObject(), QGraphicsRectItem(parent) {
@@ -186,11 +118,15 @@ Map::Map(QGraphicsItem *parent, int val) :QObject(), QGraphicsRectItem(parent) {
 		}
 	}
 
+	//std::vector<std::vector<Box *>> pudelka(10, std::vector<Box *>(10, nullptr));
+
 	for (int i = 0; i < 10; i++) {
+		//std::vector<Box *> list;
 		for (int j = 0; j < 10; j++) {
 			mapka[j][i] = new QGraphicsRectItem(this);
 			mapka[j][i]->setRect(j*50, i*50, 50, 50);
 			//mapka[i][j]->setTransformOriginPoint(0, 0);
+			
 
 			//mapka[i][j]->setFlag(QGraphicsItem::ItemIsFocusable);
 			//mapka[i][j]->setFocus();
@@ -205,7 +141,10 @@ Map::Map(QGraphicsItem *parent, int val) :QObject(), QGraphicsRectItem(parent) {
 				mapka[j][i]->setBrush(QPixmap(":/images/coin.png"));
 			}
 			else if (mapa[i][j] == 3) {
+				//mapka[j][i]->setRect(1000, 1000, 50, 50);
 				mapka[j][i]->setBrush(QPixmap(":/images/brown.png"));
+				//list.push_back(new Box(this, j * 50, i * 50));
+				//game->level->boxs2.push_back(new Box(this, j * 50, i * 50));
 			}
 			
 
@@ -213,50 +152,13 @@ Map::Map(QGraphicsItem *parent, int val) :QObject(), QGraphicsRectItem(parent) {
 			l->setGeometry(j * 50 + 10, i * 50 + 10, 20, 20);
 			l->setText(QString::number(i)+" "+ QString::number(j));*/
 		}
+		//pudelka.push_back(list);
+		//list.clear();
 	}
-	//QBrush c = mapka[0][0]->brush();
-	//QColor color = c.color();
-	//color.rgb();
-	/*QString str = "";
-	QString str2 = "";
-	for (int i = 0; i < 10; i++) {
-		for (int j = 0; j < 10; j++) {
-			str += QString::number(mapa[i][j])+" ";
-			
-			if (mapa[i][j] == 0) {
-				//mapka[i][j]->setBrush(QPixmap(":/images/white.png"));
-				str2 += QString::number(0) + " ";
-			}
-			else if (mapa[i][j] == 1) {
-				//mapka[i][j]->setBrush(QPixmap(":/images/black.png"));
-				str2 += QString::number(1) + " ";
-			}
-			else if (mapa[i][j] == 2) {
-				//mapka[i][j]->setBrush(QPixmap(":/images/coin.png"));
-				str2 += QString::number(2) + " ";
-			}
-			else if (mapa[i][j] == 3) {
-				//mapka[i][j]->setBrush(QPixmap(":/images/brown.png"));
-				str2 += QString::number(3) + " ";
-			}
-
-			//str2 += QString::number(mapka[i][j])+" ";
-		}
-		str += "\n";
-		str2 += "\n";
-	}
-	str += "\n";
-	str += str2;*/
-	//QMessageBox::information(game, "tytul", str);
 }
 
 std::pair<int, int> Map::getCoordinates(int x, int y){
 	return std::make_pair(x/50, y/50);
-}
-
-int Map::getNumber(int x, int y){
-	//return mapa[x / 50][y / 50];
-	return 0;
 }
 
 int Map::getCoinCount(){

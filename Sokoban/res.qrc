@@ -6,8 +6,6 @@
         <file>images/white.png</file>
         <file>images/map1.txt</file>
         <file>images/map2.txt</file>
-        <file>images/level1.png</file>
-        <file>images/level2.png</file>
         <file>images/map3.txt</file>
         <file>images/map4.txt</file>
         <file>images/gif1.gif</file>
@@ -17,5 +15,9 @@
         <file>images/PlayerDown.png</file>
         <file>images/Wall.png</file>
         <file>images/Wall2.png</file>
+        <file>images/level1.png</file>
+        <file>images/level2.png</file>
+        <file>images/level3.png</file>
+        <file>images/level4.png</file>
     </qresource>
 </RCC>

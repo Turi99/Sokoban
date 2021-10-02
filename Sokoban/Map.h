@@ -13,7 +13,6 @@ public:
 	Map(QGraphicsItem *parent = 0);
 	Map(QGraphicsItem *parent, int val);
 	static std::pair<int, int> getCoordinates(int x, int y);
-	static int getNumber(int x, int y);
 	
 	int mapa[10][10];
 	QGraphicsRectItem *mapka[10][10];

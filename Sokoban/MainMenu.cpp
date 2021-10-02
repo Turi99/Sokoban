@@ -80,9 +80,6 @@ void MainMenu::keyPressEvent(QKeyEvent *event){
 }
 
 void MainMenu::setArrow(int val){
-	//game->l->setText(QString::number(val));
-	//QMessageBox::information(game, "", QString::number(val));
-	//test->setPlainText(QString::number(val));
 	arrow1->setRect(200, 200+(55*(val-1)), 30, 30);
 	arrow2->setRect(350, 200+(55*(val-1)), 30, 30);
 }

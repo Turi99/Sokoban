@@ -19,6 +19,7 @@ public:
 	Level(QGraphicsItem *parent, int nrLevel); // ?? Tworzenie levelu poprzez wybow z "Wybierz poziom"
 	void createLevel(int val);
 	void nextLevel(int val);
+	void resetLevel(int val);
 
 	void changeItemPosition();
 	void checkCoinCount();
@@ -33,9 +34,12 @@ public:
 	//std::vector<std::vector<std::unique_ptr<Box>>> boxs;
 	//std::vector<std::vector<Box *>> boxs(10, std::vector<Box *>(10, 0));
 	std::vector<std::vector<Box *>> boxs;
+	//std::vector<Box *> boxs2 = std::vector<Box *>(map->getCoinCount(), nullptr);
 	QList<Point *> points;
 
-	QGraphicsTextItem *coinCount;
+	//std::vector<std::vector<int>> test;// (t, std::vector<int>(10, 0));
+
+	QGraphicsTextItem *coinCount, *levelText;
 
 	GameMenu *gameMenu = nullptr;
 

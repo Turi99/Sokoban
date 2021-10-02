@@ -2,11 +2,12 @@
 #include "Level.h"
 #include "Game.h"
 #include <QMessageBox>
+#include <vector>
 
 extern Game *game;
 
 Level::Level(QGraphicsItem *parent): /*QObject(),*/ QGraphicsRectItem(parent) {
-	// tworzenie mapy i reszty rzeczy
+	// tworzenie mapy i reszty rzeczy (dla testow)
 	levelMap = new QGraphicsRectItem(this);
 	levelMap->setTransformOriginPoint(0, 0);
 	levelMap->setRect(0, 0, 620, 520);
@@ -14,7 +15,6 @@ Level::Level(QGraphicsItem *parent): /*QObject(),*/ QGraphicsRectItem(parent) {
 	levelMap->setFocus();
 	levelMap->setBrush(QColor(Qt::gray));
 	createLevel(1);
-
 }
 
 Level::Level(QGraphicsItem *parent, int nrLevel) : QGraphicsRectItem(parent), levelNumber(nrLevel) {
@@ -28,39 +28,16 @@ Level::Level(QGraphicsItem *parent, int nrLevel) : QGraphicsRectItem(parent), le
 }
 
 void Level::createLevel(int val){
-	// tworzenie poziomu
-	if (val == 1) {
-		map = new Map(levelMap);
+	map = new Map(levelMap, val);
+	player = new Player(levelMap, val);
 
-		player = new Player(levelMap);
+	coinCount = new QGraphicsTextItem(levelMap);
+	coinCount->setPos(540, 50);
+	coinCount->setPlainText("Coin counts: " + QString::number(map->getCoinCount()));
 
-		coinCount = new QGraphicsTextItem(levelMap);
-		coinCount->setPos(540, 20);
-		coinCount->setPlainText("Coin counts: " + QString::number(map->getCoinCount()));
-
-	}
-	else if(val == 2) {
-		map = new Map(levelMap, 2);
-
-		player = new Player(levelMap);
-
-		coinCount = new QGraphicsTextItem(levelMap);
-		coinCount->setPos(540, 20);
-		coinCount->setPlainText("Coin counts: " + QString::number(map->getCoinCount()));
-	}
-	else if (val == 3 || val == 4) {
-		map = new Map(levelMap, val);
-
-		player = new Player(levelMap, val);
-
-		coinCount = new QGraphicsTextItem(levelMap);
-		coinCount->setPos(540, 20);
-		coinCount->setPlainText("Coin counts: " + QString::number(map->getCoinCount()));
-	}
-
-	//gameMenu = new GameMenu(levelMap);
-	//gameMenu->hide();
-
+	levelText = new QGraphicsTextItem(levelMap);
+	levelText->setPos(540, 20);
+	levelText->setPlainText("Level: " + QString::number(val));
 }
 
 void Level::nextLevel(int val){
@@ -68,8 +45,19 @@ void Level::nextLevel(int val){
 	delete map;
 
 	delete coinCount;
+	delete levelText;
 
 	game->level->createLevel(val);
+}
+
+void Level::resetLevel(int val){
+	delete player;
+	delete map;
+
+	delete coinCount;
+	delete levelText;
+
+	createLevel(val);
 }
 
 void Level::changeItemPosition(){
@@ -85,43 +73,35 @@ void Level::checkCoinCount(){
 }
 
 void Level::keyPressEvent(QKeyEvent *event){
-	/*if (event->key() == Qt::Key_Escape) {
-		if (gameMenu == nullptr) {
-			//gameMenu = new GameMenu();
-			//game->scene->addItem(game->gameMenu);
-			gameMenu = new GameMenu(levelMap);
-		}
-		else {
-			delete gameMenu;
-			gameMenu = nullptr;
-		}
-
-		if (!gameMenu->isVisible()) {
-			gameMenu->show();
-		}
-		else {
-			gameMenu->hide();
-		}
-
-	}*/
 	if (event->key() == Qt::Key_A) {
-		player->moveLeft();
-		checkCoinCount();
+		if (map->getCoinCount() != 0) {
+			player->moveLeft();
+			checkCoinCount();
+		}
 	}
 	else if (event->key() == Qt::Key_D) {
-		player->moveRight();
-		checkCoinCount();
+		if (map->getCoinCount() != 0) {
+			player->moveRight();
+			checkCoinCount();
+		}
 	}
 	else if (event->key() == Qt::Key_W) {
-		player->moveUp();
-		checkCoinCount();
+		if (map->getCoinCount() != 0) {
+			player->moveUp();
+			checkCoinCount();
+		}
 	}
 	else if (event->key() == Qt::Key_S) {
-		player->moveDown();
-		checkCoinCount();
+		if (map->getCoinCount() != 0) {
+			player->moveDown();
+			checkCoinCount();
+		}
 	}
 	if (event->key() == Qt::Key_Escape) {
 		game->levelToMenu();
+	}
+	if (event->key() == Qt::Key_R) {
+		resetLevel(levelNumber);
 	}
 	if (event->key() == Qt::Key_Space) {
 		if (map->getCoinCount() == 0) {
@@ -131,5 +111,4 @@ void Level::keyPressEvent(QKeyEvent *event){
 			}
 		}
 	}
-
 }

@@ -90,5 +90,9 @@ void SelectLevel::setArrow(int val){
 	else if (val == 3) {
 		//iconLevel->setPixmap(QPixmap());
 		//iconLevel->setPixmap(QPixmap(":/images/level2.png"));
+		iconLevel->setPixmap(QPixmap(":/images/level3.png"));
+	}
+	else if (val == 4) {
+		iconLevel->setPixmap(QPixmap(":/images/level4.png"));
 	}
 }
