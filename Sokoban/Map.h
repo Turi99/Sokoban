@@ -6,6 +6,7 @@
 #include <qgraphicsitem.h>
 #include <qvector.h>
 #include <QGraphicsPixmapItem>
+#include <vector>
 
 class Map :public QObject, public QGraphicsRectItem{
 	Q_OBJECT
@@ -18,6 +19,9 @@ public:
 	QGraphicsRectItem *mapka[10][10];
 	int getCoinCount();
 	//QGraphicsPixmapItem *mapka[10][10];
+	std::vector<std::pair<int, int>> getCoordsBox();
+	std::vector<std::pair<int, int>> getCoordsPoint();
+	std::vector<std::pair<int, int>> getCoordsWall();
 private:
 	//QVector<QVector<QGraphicsRectItem *>> mapa;
 };

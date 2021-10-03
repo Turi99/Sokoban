@@ -32,10 +32,16 @@ public:
 	Player *player = nullptr;
 
 	//std::vector<std::vector<std::unique_ptr<Box>>> boxs;
-	//std::vector<std::vector<Box *>> boxs(10, std::vector<Box *>(10, 0));
 	std::vector<std::vector<Box *>> boxs;
-	//std::vector<Box *> boxs2 = std::vector<Box *>(map->getCoinCount(), nullptr);
-	QList<Point *> points;
+	std::vector<Box *> pudelka;
+	std::vector<std::pair<int, int>> coordsBoxs;
+	//std::vector<Wall *> sciany;
+	std::vector<std::pair<int, int>> coordsWalls;
+	std::vector<Point *> punkty;
+	std::vector<std::pair<int, int>> coordsPoints;
+	
+	
+	//QList<Point *> points;
 
 	//std::vector<std::vector<int>> test;// (t, std::vector<int>(10, 0));
 
@@ -44,6 +50,9 @@ public:
 	GameMenu *gameMenu = nullptr;
 
 	//void check();
+
+	int ileScian = 0, ilePudelek = 0, ilePunktow = 0;
+	void testTworzeniaObiektow();
 
 protected:
 	void keyPressEvent(QKeyEvent *event) override;

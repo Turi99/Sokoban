@@ -25,6 +25,7 @@ Level::Level(QGraphicsItem *parent, int nrLevel) : QGraphicsRectItem(parent), le
 	levelMap->setFocus();
 	levelMap->setBrush(QColor(Qt::gray));
 	createLevel(nrLevel);
+	testTworzeniaObiektow();
 }
 
 void Level::createLevel(int val){
@@ -71,6 +72,28 @@ void Level::checkCoinCount(){
 		coinCount->setPlainText("Coin counts: " + QString::number(map->getCoinCount()) + "\n" + "Koniec poziomu");
 	}
 }
+
+////////////////////
+
+void Level::testTworzeniaObiektow(){
+	coordsBoxs = map->getCoordsBox();
+	for (int i = 0; i < coordsBoxs.size(); i++) {
+		pudelka.push_back(new Box(levelMap, coordsBoxs[i].first, coordsBoxs[i].second));
+	}
+
+	coordsPoints = map->getCoordsPoint();
+	for (int i = 0; i < coordsPoints.size(); i++) {
+		//pudelka.push_back(new Point(levelMap, coordsBoxs[i].first, coordsBoxs[i].second));
+		punkty.push_back(new Point());
+	}
+
+	coordsWalls = map->getCoordsWall();
+	for (int i = 0; i < coordsWalls.size(); i++) {
+		//punkty.push_back(new Wall());
+	}
+}
+
+/////////////////////////
 
 void Level::keyPressEvent(QKeyEvent *event){
 	if (event->key() == Qt::Key_A) {

@@ -120,6 +120,8 @@ Map::Map(QGraphicsItem *parent, int val) :QObject(), QGraphicsRectItem(parent) {
 
 	//std::vector<std::vector<Box *>> pudelka(10, std::vector<Box *>(10, nullptr));
 
+	int ilePudelek = 0;
+
 	for (int i = 0; i < 10; i++) {
 		//std::vector<Box *> list;
 		for (int j = 0; j < 10; j++) {
@@ -136,13 +138,18 @@ Map::Map(QGraphicsItem *parent, int val) :QObject(), QGraphicsRectItem(parent) {
 			}
 			else if(mapa[i][j] == 1){
 				mapka[j][i]->setBrush(QPixmap(":/images/Wall.png"));
+				//game->level->ileScian+=1;
 			}
 			else if (mapa[i][j] == 2) {
 				mapka[j][i]->setBrush(QPixmap(":/images/coin.png"));
+				//game->level->ilePunktow+=1;
 			}
 			else if (mapa[i][j] == 3) {
 				//mapka[j][i]->setRect(1000, 1000, 50, 50);
 				mapka[j][i]->setBrush(QPixmap(":/images/brown.png"));
+				//game->level->ilePudelek+=1;
+				ilePudelek++;
+				// game->level->coordsBoxs.push_back(std::make_pair(j * 50, i * 50));
 				//list.push_back(new Box(this, j * 50, i * 50));
 				//game->level->boxs2.push_back(new Box(this, j * 50, i * 50));
 			}
@@ -155,11 +162,17 @@ Map::Map(QGraphicsItem *parent, int val) :QObject(), QGraphicsRectItem(parent) {
 		//pudelka.push_back(list);
 		//list.clear();
 	}
+
+	//game->level->ilePudelek += ilePudelek;
+
 }
+
+//////////////////////////////////////
 
 std::pair<int, int> Map::getCoordinates(int x, int y){
 	return std::make_pair(x/50, y/50);
 }
+//////////////////////////////////////
 
 int Map::getCoinCount(){
 	int ile = 0;
@@ -169,4 +182,52 @@ int Map::getCoinCount(){
 		}
 	}
 	return ile;
+}
+
+std::vector<std::pair<int, int>> Map::getCoordsBox(){
+	std::vector<std::pair<int, int>> kordy;
+	for (int i = 0; i < 10; i++) {
+		for (int j = 0; j < 10; j++) {
+			if (mapa[i][j] == 0) {
+				//	
+			}
+			else if (mapa[i][j] == 1) {
+				//game->level->ileScian+=1;
+			}
+			else if (mapa[i][j] == 2) {
+				//game->level->ilePunktow+=1;
+			}
+			else if (mapa[i][j] == 3) {
+				kordy.push_back(std::make_pair(j * 50, i * 50));
+			}
+		}
+	}
+
+	return kordy;
+}
+
+std::vector<std::pair<int, int>> Map::getCoordsPoint(){
+	std::vector<std::pair<int, int>> kordy;
+	for (int i = 0; i < 10; i++) {
+		for (int j = 0; j < 10; j++) {
+			if (mapa[i][j] == 2) {
+				kordy.push_back(std::make_pair(j * 50, i * 50));
+			}
+		}
+	}
+
+	return kordy;
+}
+
+std::vector<std::pair<int, int>> Map::getCoordsWall(){
+	std::vector<std::pair<int, int>> kordy;
+	for (int i = 0; i < 10; i++) {
+		for (int j = 0; j < 10; j++) {
+			if (mapa[i][j] == 1) {
+				kordy.push_back(std::make_pair(j * 50, i * 50));
+			}
+		}
+	}
+
+	return kordy;
 }
