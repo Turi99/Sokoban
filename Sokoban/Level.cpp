@@ -74,10 +74,11 @@ void Level::checkCoinCount(){
 }
 
 ////////////////////
-
+#include <qmessagebox.h>
 void Level::testTworzeniaObiektow(){
 	coordsBoxs = map->getCoordsBox();
 	for (int i = 0; i < coordsBoxs.size(); i++) {
+		//QMessageBox::information(game, "", QString::number(coordsBoxs[i].first) + " " + QString::number(coordsBoxs[i].second));
 		pudelka.push_back(new Box(levelMap, coordsBoxs[i].first, coordsBoxs[i].second));
 	}
 
@@ -91,6 +92,7 @@ void Level::testTworzeniaObiektow(){
 	for (int i = 0; i < coordsWalls.size(); i++) {
 		//punkty.push_back(new Wall());
 	}
+	//QMessageBox::information(game, "", QString::number(pudelka[0]->getPosition().first) + " " + QString::number(pudelka[0]->getPosition().second));
 }
 
 /////////////////////////
@@ -98,25 +100,29 @@ void Level::testTworzeniaObiektow(){
 void Level::keyPressEvent(QKeyEvent *event){
 	if (event->key() == Qt::Key_A) {
 		if (map->getCoinCount() != 0) {
-			player->moveLeft();
+			//player->moveLeft();
+			player->moveLeft2(pudelka);
 			checkCoinCount();
 		}
 	}
 	else if (event->key() == Qt::Key_D) {
 		if (map->getCoinCount() != 0) {
-			player->moveRight();
+			//player->moveRight();
+			player->moveRight2(pudelka);
 			checkCoinCount();
 		}
 	}
 	else if (event->key() == Qt::Key_W) {
 		if (map->getCoinCount() != 0) {
-			player->moveUp();
+			//player->moveUp();
+			player->moveUp2(pudelka);
 			checkCoinCount();
 		}
 	}
 	else if (event->key() == Qt::Key_S) {
 		if (map->getCoinCount() != 0) {
-			player->moveDown();
+			//player->moveDown();
+			player->moveDown2(pudelka);
 			checkCoinCount();
 		}
 	}

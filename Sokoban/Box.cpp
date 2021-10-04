@@ -18,6 +18,10 @@ Box::Box(QGraphicsItem *parent, int x, int y) : QGraphicsRectItem(parent) {
 	shape->setPos(x, y);
 }
 
-void Box::setTexture(){
-	shape->setBrush(QPixmap(":/images/brown.png"));
+std::pair<int, int> Box::getPosition(){
+	return std::pair<int,int>(shape->pos().x(), shape->pos().y());
+}
+
+void Box::setPosition(int x, int y){
+	shape->setPos(x, y);
 }
