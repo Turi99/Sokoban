@@ -137,7 +137,7 @@ Map::Map(QGraphicsItem *parent, int val) :QObject(), QGraphicsRectItem(parent) {
 				mapka[j][i]->setBrush(QPixmap(":/images/white.png"));
 			}
 			else if(mapa[i][j] == 1){
-				mapka[j][i]->setBrush(QPixmap(":/images/Wall.png"));
+				//mapka[j][i]->setBrush(QPixmap(":/images/Wall.png"));
 				//game->level->ileScian+=1;
 			}
 			else if (mapa[i][j] == 2) {
@@ -146,7 +146,8 @@ Map::Map(QGraphicsItem *parent, int val) :QObject(), QGraphicsRectItem(parent) {
 			}
 			else if (mapa[i][j] == 3) {
 				//mapka[j][i]->setRect(1000, 1000, 50, 50);
-				mapka[j][i]->setBrush(QPixmap(":/images/brown.png"));
+				//mapka[j][i]->setBrush(QPixmap(":/images/brown.png"));
+				mapka[j][i]->setBrush(QPixmap(":/images/white.png"));
 				//game->level->ilePudelek+=1;
 				ilePudelek++;
 				// game->level->coordsBoxs.push_back(std::make_pair(j * 50, i * 50));

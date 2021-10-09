@@ -259,6 +259,41 @@ void Player::moveLeft2(std::vector<Box *> &pudelka){
 	rectangle->setBrush(QPixmap(":/images/PlayerLeft.png"));
 }
 
+void Player::moveLeft3(std::vector<Box *> &pudelka, std::vector<Wall *> &sciany){
+	int posX = pos().x();
+	int posY = pos().y();
+
+	for (int i = 0; i < pudelka.size(); i++) {
+		if (posX - 50 == pudelka[i]->getPosition().first /*&& posY == pudelka[i]->getPosition().second*/) {
+			/*//pudelka[i]->setPosition(pudelka[i]->getPosition().first - 50, pudelka[i]->getPosition().second);
+			if (posX - 100 != sciany[i]->getPosition().first && posY == sciany[i]->getPosition().second
+				//&& posX - 100 != pudelka[i]->getPosition().first && posY == pudelka[i]->getPosition().second) {
+				setPos(x() - 50, y());
+				pudelka[i]->setPosition(pudelka[i]->getPosition().first - 50, pudelka[i]->getPosition().second);
+
+			}*/
+			if (game->level->map->mapa[posY / 50 - 0][posX / 50 - 2] != 1 && posX - 100 != pudelka[i]->getPosition().first && posY == pudelka[i]->getPosition().second) {
+				setPos(x() - 50, y());
+				pudelka[i]->setPosition(pudelka[i]->getPosition().first - 50, pudelka[i]->getPosition().second);
+			}
+		}
+		else if (game->level->map->mapa[posY / 50 - 0][posX / 50 - 2] != 1/*posX - 50 != sciany[i]->getPosition().first && posY != sciany[i]->getPosition().second*/) {
+			setPos(x() - 50, y());
+		}
+	}
+
+	/*if (game->level->map->mapa[posY / 50 - 0][posX / 50 - 1] == 3) {
+		if (game->level->map->mapa[posY / 50 - 0][posX / 50 - 2] != 1 && game->level->map->mapa[posY / 50 - 0][posX / 50 - 2] != 3) {
+			//setPos(x() - 50, y());
+		}
+	}
+	else if (game->level->map->mapa[posY / 50 - 0][posX / 50 - 1] != 1) {
+		//setPos(x() - 50, y());
+	}*/
+
+	rectangle->setBrush(QPixmap(":/images/PlayerLeft.png"));
+}
+
 void Player::moveRight2(std::vector<Box *> &pudelka) {
 	int posX = pos().x();
 	int posY = pos().y();
@@ -341,4 +376,28 @@ void Player::moveDown2(std::vector<Box *> &pudelka){
 	}
 
 	rectangle->setBrush(QPixmap(":/images/PlayerDown.png"));
+}
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="sciany"></param>
+/// <param name="posX"></param>
+/// <param name="posY"></param>
+/// <returns></returns>
+
+std::pair<bool, int> Player::wyszukajSciany(std::vector<Wall *> &sciany, int posX, int posY){
+	for (int i = 0; i < sciany.size(); ++i) {
+		if (posX - 50 == sciany[i]->getPosition().first && posY == sciany[i]->getPosition().second) {
+			return std::make_pair(false,i);
+		}
+	}
+}
+
+std::pair<bool, int> Player::wyszukajPudelka(std::vector<Box *> &pudelka, int posX, int posY){
+	for (int i = 0; i < pudelka.size(); ++i) {
+		if (posX != pudelka[i]->getPosition().first && posY == pudelka[i]->getPosition().second) {
+			return std::make_pair(true, i);
+		}
+	}
 }

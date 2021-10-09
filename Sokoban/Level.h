@@ -9,7 +9,16 @@
 #include "GameMenu.h"
 #include "Box.h"
 #include "Point.h"
+#include "Wall.h"
+
 #include <vector>
+
+/*struct wyszukajSciany {
+	bool operator()(const std::vector<Wall *> &sciany, Player *p) {
+		if(p->pos().x)
+		return true;
+	}
+};*/
 
 class Level: /*public QObject,*/ public QGraphicsRectItem {
 	//Q_OBJECT
@@ -35,7 +44,7 @@ public:
 	std::vector<std::vector<Box *>> boxs;
 	std::vector<Box *> pudelka;
 	std::vector<std::pair<int, int>> coordsBoxs;
-	//std::vector<Wall *> sciany;
+	std::vector<Wall *> sciany;
 	std::vector<std::pair<int, int>> coordsWalls;
 	std::vector<Point *> punkty;
 	std::vector<std::pair<int, int>> coordsPoints;

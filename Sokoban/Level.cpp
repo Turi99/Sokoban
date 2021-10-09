@@ -90,7 +90,7 @@ void Level::testTworzeniaObiektow(){
 
 	coordsWalls = map->getCoordsWall();
 	for (int i = 0; i < coordsWalls.size(); i++) {
-		//punkty.push_back(new Wall());
+		sciany.push_back(new Wall(levelMap, coordsWalls[i].first, coordsWalls[i].second));
 	}
 	//QMessageBox::information(game, "", QString::number(pudelka[0]->getPosition().first) + " " + QString::number(pudelka[0]->getPosition().second));
 }
@@ -101,8 +101,11 @@ void Level::keyPressEvent(QKeyEvent *event){
 	if (event->key() == Qt::Key_A) {
 		if (map->getCoinCount() != 0) {
 			//player->moveLeft();
-			player->moveLeft2(pudelka);
+			//player->moveLeft2(pudelka);
+			player->moveLeft3(pudelka, sciany);
 			checkCoinCount();
+			//wyszukajSciany();
+			//std::find(sciany.begin(), sciany.end(), wyszukajSciany());
 		}
 	}
 	else if (event->key() == Qt::Key_D) {
