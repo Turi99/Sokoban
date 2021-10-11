@@ -263,24 +263,32 @@ void Player::moveLeft3(std::vector<Box *> &pudelka, std::vector<Wall *> &sciany)
 	int posX = pos().x();
 	int posY = pos().y();
 
-	for (int i = 0; i < pudelka.size(); i++) {
-		if (posX - 50 == pudelka[i]->getPosition().first /*&& posY == pudelka[i]->getPosition().second*/) {
-			/*//pudelka[i]->setPosition(pudelka[i]->getPosition().first - 50, pudelka[i]->getPosition().second);
+	/*for (int i = 0; i < pudelka.size(); i++) {
+		if (posX - 50 == pudelka[i]->getPosition().first && posY == pudelka[i]->getPosition().second) {
+			//pudelka[i]->setPosition(pudelka[i]->getPosition().first - 50, pudelka[i]->getPosition().second);
 			if (posX - 100 != sciany[i]->getPosition().first && posY == sciany[i]->getPosition().second
 				//&& posX - 100 != pudelka[i]->getPosition().first && posY == pudelka[i]->getPosition().second) {
 				setPos(x() - 50, y());
 				pudelka[i]->setPosition(pudelka[i]->getPosition().first - 50, pudelka[i]->getPosition().second);
 
-			}*/
+			}
 			if (game->level->map->mapa[posY / 50 - 0][posX / 50 - 2] != 1 && posX - 100 != pudelka[i]->getPosition().first && posY == pudelka[i]->getPosition().second) {
 				setPos(x() - 50, y());
 				pudelka[i]->setPosition(pudelka[i]->getPosition().first - 50, pudelka[i]->getPosition().second);
 			}
 		}
-		else if (game->level->map->mapa[posY / 50 - 0][posX / 50 - 2] != 1/*posX - 50 != sciany[i]->getPosition().first && posY != sciany[i]->getPosition().second*/) {
+		else if (game->level->map->mapa[posY / 50 - 0][posX / 50 - 2] != 1 posX - 50 != sciany[i]->getPosition().first && posY != sciany[i]->getPosition().second) {
 			setPos(x() - 50, y());
 		}
+	}*/
+
+	bool t = wyszukajSciany(sciany, posX, posY, '-');
+
+	if (!wyszukajSciany(sciany, posX, posY, '-')) {
+		setPos(x() - 50, y());
 	}
+
+	//bool t = wyszukajSciany(sciany, posX - 50, posY).first;
 
 	/*if (game->level->map->mapa[posY / 50 - 0][posX / 50 - 1] == 3) {
 		if (game->level->map->mapa[posY / 50 - 0][posX / 50 - 2] != 1 && game->level->map->mapa[posY / 50 - 0][posX / 50 - 2] != 3) {
@@ -288,7 +296,8 @@ void Player::moveLeft3(std::vector<Box *> &pudelka, std::vector<Wall *> &sciany)
 		}
 	}
 	else if (game->level->map->mapa[posY / 50 - 0][posX / 50 - 1] != 1) {
-		//setPos(x() - 50, y());
+		setPos(x() - 50, y());
+		//QMessageBox::information(game, "", QString::number(pos().x()));
 	}*/
 
 	rectangle->setBrush(QPixmap(":/images/PlayerLeft.png"));
@@ -386,18 +395,37 @@ void Player::moveDown2(std::vector<Box *> &pudelka){
 /// <param name="posY"></param>
 /// <returns></returns>
 
-std::pair<bool, int> Player::wyszukajSciany(std::vector<Wall *> &sciany, int posX, int posY){
-	for (int i = 0; i < sciany.size(); ++i) {
-		if (posX - 50 == sciany[i]->getPosition().first && posY == sciany[i]->getPosition().second) {
-			return std::make_pair(false,i);
+bool Player::wyszukajSciany(std::vector<Wall *> &sciany, int posX, int posY, char c){
+	for (int i = 0; i < sciany.size(); i++) {
+		if (c == '-') {
+			if (posX >= sciany[i]->getPosition().first && posY == sciany[i]->getPosition().second) {
+				if (posX - sciany[i]->getPosition().first == 50) {
+					return true; // is Wall
+				}
+			}
 		}
+		else {
+			if (posX <= sciany[i]->getPosition().first && posY == sciany[i]->getPosition().second) {
+				if (sciany[i]->getPosition().first - posX == 50) {
+					return true; // is Wall
+				}
+			}
+		}
+		
 	}
+
+	return false; // is not Wall
 }
+
 
 std::pair<bool, int> Player::wyszukajPudelka(std::vector<Box *> &pudelka, int posX, int posY){
 	for (int i = 0; i < pudelka.size(); ++i) {
 		if (posX != pudelka[i]->getPosition().first && posY == pudelka[i]->getPosition().second) {
+			QMessageBox::information(game, "", QString::number(pos().x()) + QString::number(pos().y()) + "\n" + QString::number(pudelka[i]->getPosition().first));
 			return std::make_pair(true, i);
+		}
+		else {
+			return std::make_pair(false, i);
 		}
 	}
 }
