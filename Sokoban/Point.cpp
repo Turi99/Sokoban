@@ -5,7 +5,7 @@ Point::Point(QGraphicsItem *parent) : QGraphicsRectItem(parent){
 	//
 }
 
-Point::Point(QGraphicsItem *parent, int x, int y){
+Point::Point(QGraphicsItem *parent, int x, int y) : QGraphicsRectItem(parent) {
 	shape = new QGraphicsRectItem(this);
 	shape->setTransformOriginPoint(0, 0);
 	shape->setRect(0, 0, 50, 50);

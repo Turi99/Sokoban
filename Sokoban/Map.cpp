@@ -141,7 +141,8 @@ Map::Map(QGraphicsItem *parent, int val) :QObject(), QGraphicsRectItem(parent) {
 				//game->level->ileScian+=1;
 			}
 			else if (mapa[i][j] == 2) {
-				mapka[j][i]->setBrush(QPixmap(":/images/coin.png"));
+				//mapka[j][i]->setBrush(QPixmap(":/images/coin.png"));
+				mapka[j][i]->setBrush(QPixmap(":/images/white.png"));
 				//game->level->ilePunktow+=1;
 			}
 			else if (mapa[i][j] == 3) {

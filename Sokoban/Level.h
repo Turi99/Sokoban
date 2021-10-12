@@ -32,6 +32,7 @@ public:
 
 	void changeItemPosition();
 	void checkCoinCount();
+	void checkCoinCount(std::vector<Point *> &points, std::vector<Box *> &boxs);
 
 	int levelNumber = 1;
 	int countOfLevel = 4;
@@ -40,7 +41,7 @@ public:
 	Map *map = nullptr;
 	Player *player = nullptr;
 
-	//std::vector<std::vector<std::unique_ptr<Box>>> boxs;
+	//std::vector<std::vector<std::unique_ptr<Box>>> boxs; // do zastanowienia sie, czy zapisac w taki sposob
 	std::vector<std::vector<Box *>> boxs;
 	std::vector<Box *> pudelka;
 	std::vector<std::pair<int, int>> coordsBoxs;
@@ -49,16 +50,9 @@ public:
 	std::vector<Point *> punkty;
 	std::vector<std::pair<int, int>> coordsPoints;
 	
-	
-	//QList<Point *> points;
-
-	//std::vector<std::vector<int>> test;// (t, std::vector<int>(10, 0));
-
 	QGraphicsTextItem *coinCount, *levelText;
 
 	GameMenu *gameMenu = nullptr;
-
-	//void check();
 
 	int ileScian = 0, ilePudelek = 0, ilePunktow = 0;
 	void testTworzeniaObiektow();

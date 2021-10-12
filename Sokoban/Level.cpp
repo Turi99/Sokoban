@@ -73,26 +73,30 @@ void Level::checkCoinCount(){
 	}
 }
 
+void Level::checkCoinCount(std::vector<Point *> &points, std::vector<Box *> &boxs){
+	//
+}
+
 ////////////////////
 #include <qmessagebox.h>
 void Level::testTworzeniaObiektow(){
+	coordsPoints = map->getCoordsPoint();
+	for (int i = 0; i < coordsPoints.size(); i++) {
+		punkty.push_back(new Point(levelMap, coordsPoints[i].first, coordsPoints[i].second));
+		//punkty.push_back(new Point());
+	}
+	
 	coordsBoxs = map->getCoordsBox();
 	for (int i = 0; i < coordsBoxs.size(); i++) {
 		//QMessageBox::information(game, "", QString::number(coordsBoxs[i].first) + " " + QString::number(coordsBoxs[i].second));
 		pudelka.push_back(new Box(levelMap, coordsBoxs[i].first, coordsBoxs[i].second));
 	}
 
-	coordsPoints = map->getCoordsPoint();
-	for (int i = 0; i < coordsPoints.size(); i++) {
-		//pudelka.push_back(new Point(levelMap, coordsBoxs[i].first, coordsBoxs[i].second));
-		punkty.push_back(new Point());
-	}
 
 	coordsWalls = map->getCoordsWall();
 	for (int i = 0; i < coordsWalls.size(); i++) {
 		sciany.push_back(new Wall(levelMap, coordsWalls[i].first, coordsWalls[i].second));
 	}
-	//QMessageBox::information(game, "", QString::number(pudelka[0]->getPosition().first) + " " + QString::number(pudelka[0]->getPosition().second));
 }
 
 /////////////////////////
@@ -111,21 +115,24 @@ void Level::keyPressEvent(QKeyEvent *event){
 	else if (event->key() == Qt::Key_D) {
 		if (map->getCoinCount() != 0) {
 			//player->moveRight();
-			player->moveRight2(pudelka);
+			//player->moveRight2(pudelka);
+			player->moveRight3(pudelka, sciany);
 			checkCoinCount();
 		}
 	}
 	else if (event->key() == Qt::Key_W) {
 		if (map->getCoinCount() != 0) {
 			//player->moveUp();
-			player->moveUp2(pudelka);
+			//player->moveUp2(pudelka);
+			player->moveUp3(pudelka, sciany);
 			checkCoinCount();
 		}
 	}
 	else if (event->key() == Qt::Key_S) {
 		if (map->getCoinCount() != 0) {
 			//player->moveDown();
-			player->moveDown2(pudelka);
+			//player->moveDown2(pudelka);
+			player->moveDown3(pudelka, sciany);
 			checkCoinCount();
 		}
 	}
