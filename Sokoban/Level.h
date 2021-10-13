@@ -32,7 +32,8 @@ public:
 
 	void changeItemPosition();
 	void checkCoinCount();
-	void checkCoinCount(std::vector<Point *> &points, std::vector<Box *> &boxs);
+	int checkCoinCount(std::vector<Point *> &points, std::vector<Box *> &boxs);
+	void checkBoxsAndPoints(std::vector<Point *> &points, std::vector<Box *> &boxs);
 
 	int levelNumber = 1;
 	int countOfLevel = 4;
@@ -56,6 +57,8 @@ public:
 
 	int ileScian = 0, ilePudelek = 0, ilePunktow = 0;
 	void testTworzeniaObiektow();
+
+	
 
 protected:
 	void keyPressEvent(QKeyEvent *event) override;

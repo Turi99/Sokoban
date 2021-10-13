@@ -25,7 +25,7 @@ Level::Level(QGraphicsItem *parent, int nrLevel) : QGraphicsRectItem(parent), le
 	levelMap->setFocus();
 	levelMap->setBrush(QColor(Qt::gray));
 	createLevel(nrLevel);
-	testTworzeniaObiektow();
+	//testTworzeniaObiektow();
 }
 
 void Level::createLevel(int val){
@@ -39,19 +39,34 @@ void Level::createLevel(int val){
 	levelText = new QGraphicsTextItem(levelMap);
 	levelText->setPos(540, 20);
 	levelText->setPlainText("Level: " + QString::number(val));
+	testTworzeniaObiektow();
 }
 
 void Level::nextLevel(int val){
+	pudelka.clear();
+	coordsBoxs.clear();
+	sciany.clear();
+	coordsWalls.clear();
+	punkty.clear();
+	coordsPoints.clear();
+	
 	delete player;
 	delete map;
 
 	delete coinCount;
 	delete levelText;
 
-	game->level->createLevel(val);
+	createLevel(val);
 }
 
 void Level::resetLevel(int val){
+	pudelka.clear();
+	coordsBoxs.clear();
+	sciany.clear();
+	coordsWalls.clear();
+	punkty.clear();
+	coordsPoints.clear();
+	
 	delete player;
 	delete map;
 
@@ -73,8 +88,26 @@ void Level::checkCoinCount(){
 	}
 }
 
-void Level::checkCoinCount(std::vector<Point *> &points, std::vector<Box *> &boxs){
-	//
+int Level::checkCoinCount(std::vector<Point *> &points, std::vector<Box *> &boxs){
+	int countOfSetBox = 0;
+	for (int i = 0; i < points.size(); i++) {
+		for (int j = 0; j < boxs.size(); j++) {
+			if (points[i]->getPosition().first == boxs[j]->getPosition().first && points[i]->getPosition().second == boxs[j]->getPosition().second) {
+				countOfSetBox++;
+			}
+		}
+	}
+	
+	return map->getCoinCount() - countOfSetBox;
+}
+
+void Level::checkBoxsAndPoints(std::vector<Point *> &points, std::vector<Box *> &boxs){
+	int counts = checkCoinCount(points, boxs);
+	coinCount->setPlainText("Coin counts: " + QString::number(counts));
+
+	if (map->getCoinCount() == 0) {
+		coinCount->setPlainText("Coin counts: " + QString::number(counts) + "\n" + "Koniec poziomu");
+	}
 }
 
 ////////////////////
@@ -107,9 +140,9 @@ void Level::keyPressEvent(QKeyEvent *event){
 			//player->moveLeft();
 			//player->moveLeft2(pudelka);
 			player->moveLeft3(pudelka, sciany);
-			checkCoinCount();
+			//checkCoinCount(punkty,pudelka);
+			checkBoxsAndPoints(punkty, pudelka);
 			//wyszukajSciany();
-			//std::find(sciany.begin(), sciany.end(), wyszukajSciany());
 		}
 	}
 	else if (event->key() == Qt::Key_D) {
@@ -117,7 +150,8 @@ void Level::keyPressEvent(QKeyEvent *event){
 			//player->moveRight();
 			//player->moveRight2(pudelka);
 			player->moveRight3(pudelka, sciany);
-			checkCoinCount();
+			//checkCoinCount(punkty, pudelka);
+			checkBoxsAndPoints(punkty, pudelka);
 		}
 	}
 	else if (event->key() == Qt::Key_W) {
@@ -125,7 +159,8 @@ void Level::keyPressEvent(QKeyEvent *event){
 			//player->moveUp();
 			//player->moveUp2(pudelka);
 			player->moveUp3(pudelka, sciany);
-			checkCoinCount();
+			//checkCoinCount(punkty, pudelka);
+			checkBoxsAndPoints(punkty, pudelka);
 		}
 	}
 	else if (event->key() == Qt::Key_S) {
@@ -133,7 +168,8 @@ void Level::keyPressEvent(QKeyEvent *event){
 			//player->moveDown();
 			//player->moveDown2(pudelka);
 			player->moveDown3(pudelka, sciany);
-			checkCoinCount();
+			//checkCoinCount(punkty, pudelka);
+			checkBoxsAndPoints(punkty, pudelka);
 		}
 	}
 	if (event->key() == Qt::Key_Escape) {
@@ -143,7 +179,7 @@ void Level::keyPressEvent(QKeyEvent *event){
 		resetLevel(levelNumber);
 	}
 	if (event->key() == Qt::Key_Space) {
-		if (map->getCoinCount() == 0) {
+		if (checkCoinCount(punkty,pudelka) == 0) {
 			levelNumber++;
 			if (levelNumber <= countOfLevel) {
 				nextLevel(levelNumber);

@@ -188,6 +188,7 @@ int Map::getCoinCount(){
 
 std::vector<std::pair<int, int>> Map::getCoordsBox(){
 	std::vector<std::pair<int, int>> kordy;
+	kordy.clear();
 	for (int i = 0; i < 10; i++) {
 		for (int j = 0; j < 10; j++) {
 			if (mapa[i][j] == 0) {
@@ -210,6 +211,7 @@ std::vector<std::pair<int, int>> Map::getCoordsBox(){
 
 std::vector<std::pair<int, int>> Map::getCoordsPoint(){
 	std::vector<std::pair<int, int>> kordy;
+	kordy.clear();
 	for (int i = 0; i < 10; i++) {
 		for (int j = 0; j < 10; j++) {
 			if (mapa[i][j] == 2) {
@@ -223,6 +225,7 @@ std::vector<std::pair<int, int>> Map::getCoordsPoint(){
 
 std::vector<std::pair<int, int>> Map::getCoordsWall(){
 	std::vector<std::pair<int, int>> kordy;
+	kordy.clear();
 	for (int i = 0; i < 10; i++) {
 		for (int j = 0; j < 10; j++) {
 			if (mapa[i][j] == 1) {
