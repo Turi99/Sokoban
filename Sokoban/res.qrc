@@ -19,5 +19,6 @@
         <file>images/level2.png</file>
         <file>images/level3.png</file>
         <file>images/level4.png</file>
+        <file>images/Wall2.jpeg</file>
     </qresource>
 </RCC>

@@ -11,7 +11,8 @@ Wall::Wall(QGraphicsItem *parent, int x, int y) : QGraphicsRectItem(parent) {
 	shape->setRect(0, 0, 50, 50);
 	shape->setFlag(QGraphicsItem::ItemIsFocusable);
 	shape->setFocus();
-	shape->setBrush(QPixmap(":/images/Wall.png"));
+	//shape->setBrush(QPixmap(":/images/Wall2.jpeg"));
+	shape->setBrush(QPixmap("images\\Wall2.png"));
 	shape->setPos(x, y);
 }
 

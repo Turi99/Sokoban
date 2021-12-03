@@ -11,7 +11,7 @@ Point::Point(QGraphicsItem *parent, int x, int y) : QGraphicsRectItem(parent) {
 	shape->setRect(0, 0, 50, 50);
 	shape->setFlag(QGraphicsItem::ItemIsFocusable);
 	shape->setFocus();
-	shape->setBrush(QPixmap(":/images/coin.png"));
+	shape->setBrush(QPixmap("images\\coin.png"));
 	shape->setPos(x, y);
 }
 

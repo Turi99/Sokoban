@@ -39,7 +39,8 @@ SelectLevel::SelectLevel(QGraphicsItem *parent) : /*QObject(),*/ QGraphicsRectIt
 
 	iconLevel = new QGraphicsPixmapItem(selectLevelScene);
 	iconLevel->setPos(300, 50);
-	iconLevel->setPixmap(QPixmap(":/images/level1.png"));
+	//iconLevel->setPixmap(QPixmap(":/images/level1.png"));
+	iconLevel->setPixmap(QPixmap("images\\level1.png"));
 	iconLevel->setScale(0.5);
 	//:/images/level1.png
 }
@@ -81,18 +82,22 @@ void SelectLevel::keyPressEvent(QKeyEvent *event) {
 void SelectLevel::setArrow(int val){
 	arrow->setRect(20, 80 + (55 * (val - 1)), 30, 30);
 	if (val == 1) {
-		iconLevel->setPixmap(QPixmap(":/images/level1.png"));
+		//iconLevel->setPixmap(QPixmap(":/images/level1.png"));
+		iconLevel->setPixmap(QPixmap("images\\level1.png"));
 	}
 	else if(val == 2){
 		//iconLevel->setPixmap(QPixmap());
-		iconLevel->setPixmap(QPixmap(":/images/level2.png"));
+		//iconLevel->setPixmap(QPixmap(":/images/level2.png"));
+		iconLevel->setPixmap(QPixmap("images\\level2.png"));
 	}
 	else if (val == 3) {
 		//iconLevel->setPixmap(QPixmap());
 		//iconLevel->setPixmap(QPixmap(":/images/level2.png"));
-		iconLevel->setPixmap(QPixmap(":/images/level3.png"));
+		//iconLevel->setPixmap(QPixmap(":/images/level3.png"));
+		iconLevel->setPixmap(QPixmap("images\\level3.png"));
 	}
 	else if (val == 4) {
-		iconLevel->setPixmap(QPixmap(":/images/level4.png"));
+		//iconLevel->setPixmap(QPixmap(":/images/level4.png"));
+		iconLevel->setPixmap(QPixmap("images\\level4.png"));
 	}
 }

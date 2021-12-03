@@ -44,16 +44,20 @@ Map::Map(QGraphicsItem *parent) :QObject(), QGraphicsRectItem(parent) {
 			//mapka[i][j]->setFocus();
 			if (mapa[i][j] == 0) {
 				//mapka[j][i]->setBrush(QPixmap(":/images/Wall2.png"));
-				mapka[j][i]->setBrush(QPixmap(":/images/white.png"));
+				//mapka[j][i]->setBrush(QPixmap(":/image/white.png"));
+				mapka[j][i]->setBrush(QPixmap("image\\white.png"));
 			}
 			else if (mapa[i][j] == 1) {
-				mapka[j][i]->setBrush(QPixmap(":/images/Wall.png"));
+				//mapka[j][i]->setBrush(QPixmap(":/images/Wall.png"));
+				mapka[j][i]->setBrush(QPixmap("image\\Wall.png"));
 			}
 			else if (mapa[i][j] == 2) {
-				mapka[j][i]->setBrush(QPixmap(":/images/coin.png"));
+				//mapka[j][i]->setBrush(QPixmap(":/images/coin.png"));
+				mapka[j][i]->setBrush(QPixmap("image\\coin.png"));
 			}
 			else if (mapa[i][j] == 3) {
-				mapka[j][i]->setBrush(QPixmap(":/images/brown.png"));
+				//mapka[j][i]->setBrush(QPixmap(":/images/brown.png"));
+				mapka[j][i]->setBrush(QPixmap("image\\brown.png"));
 			}
 		}
 	}
@@ -74,9 +78,12 @@ Map::Map(QGraphicsItem *parent, int val) :QObject(), QGraphicsRectItem(parent) {
 	//QString filename2 = "..\\Sokoban\\images\\map2.txt";
 	//QString filename3 = "..\\Sokoban\\images\\map3.txt";
 
-	std::string filename1 = "..\\Sokoban\\images\\map1.txt";
-	std::string filename2 = "..\\Sokoban\\images\\map2.txt";
-	std::string filename3 = "..\\Sokoban\\images\\map3.txt";
+	//std::string filename1 = "..\\Sokoban\\images\\map1.txt";
+	std::string filename1 = "..\\images\\map1.txt";
+	//std::string filename2 = "..\\Sokoban\\images\\map2.txt";
+	std::string filename2 = "..\\images\\map2.txt";
+	//std::string filename3 = "..\\Sokoban\\images\\map3.txt";
+	std::string filename3 = "..\\images\\map3.txt";
 
 	//QString result = filename + strLvl;
 
@@ -90,19 +97,23 @@ Map::Map(QGraphicsItem *parent, int val) :QObject(), QGraphicsRectItem(parent) {
 
 	if (val == 1) {
 		//plikMacierz.open(filename1, std::ios::in);
-		plikMacierz.open("..\\Sokoban\\images\\map1.txt", std::ios::in);
+		//plikMacierz.open("..\\Sokoban\\images\\map1.txt", std::ios::in);
+		plikMacierz.open("images\\map1.txt", std::ios::in);
 	}
 	else if (val == 2) {
 		//plikMacierz.open(filename2, std::ios::in);
-		plikMacierz.open("..\\Sokoban\\images\\map2.txt", std::ios::in);
+		//plikMacierz.open("..\\Sokoban\\images\\map2.txt", std::ios::in);
+		plikMacierz.open("images\\map2.txt", std::ios::in);
 	}
 	else if (val == 3) {
 		//plikMacierz.open(filename3, std::ios::in);
-		plikMacierz.open("..\\Sokoban\\images\\map3.txt", std::ios::in);
+		//plikMacierz.open("..\\Sokoban\\images\\map3.txt", std::ios::in);
+		plikMacierz.open("images\\map3.txt", std::ios::in);
 	}
 	else if (val == 4) {
 		//plikMacierz.open(filename3, std::ios::in);
-		plikMacierz.open("..\\Sokoban\\images\\map4.txt", std::ios::in);
+		//plikMacierz.open("..\\Sokoban\\images\\map4.txt", std::ios::in);
+		plikMacierz.open("images\\map4.txt", std::ios::in);
 	}
 
 	if (!plikMacierz.good()) {
@@ -134,7 +145,8 @@ Map::Map(QGraphicsItem *parent, int val) :QObject(), QGraphicsRectItem(parent) {
 			//mapka[i][j]->setFocus();
 			if (mapa[i][j] == 0){
 				//mapka[j][i]->setBrush(QPixmap(":/images/Wall2.png"));
-				mapka[j][i]->setBrush(QPixmap(":/images/white.png"));
+				//mapka[j][i]->setBrush(QPixmap(":/images/white.png"));
+				mapka[j][i]->setBrush(QPixmap("images\\white.png"));
 			}
 			else if(mapa[i][j] == 1){
 				//mapka[j][i]->setBrush(QPixmap(":/images/Wall.png"));
@@ -142,13 +154,15 @@ Map::Map(QGraphicsItem *parent, int val) :QObject(), QGraphicsRectItem(parent) {
 			}
 			else if (mapa[i][j] == 2) {
 				//mapka[j][i]->setBrush(QPixmap(":/images/coin.png"));
-				mapka[j][i]->setBrush(QPixmap(":/images/white.png"));
+				//mapka[j][i]->setBrush(QPixmap(":/images/white.png"));
+				mapka[j][i]->setBrush(QPixmap("images\\white.png"));
 				//game->level->ilePunktow+=1;
 			}
 			else if (mapa[i][j] == 3) {
 				//mapka[j][i]->setRect(1000, 1000, 50, 50);
 				//mapka[j][i]->setBrush(QPixmap(":/images/brown.png"));
-				mapka[j][i]->setBrush(QPixmap(":/images/white.png"));
+				//mapka[j][i]->setBrush(QPixmap(":/images/white.png"));
+				mapka[j][i]->setBrush(QPixmap("images\\white.png"));
 				//game->level->ilePudelek+=1;
 				ilePudelek++;
 				// game->level->coordsBoxs.push_back(std::make_pair(j * 50, i * 50));

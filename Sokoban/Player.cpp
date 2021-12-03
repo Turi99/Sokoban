@@ -16,7 +16,8 @@ Player::Player(QGraphicsItem *parent) :/*QObject(),*/ QGraphicsRectItem(parent) 
 	rectangle->setFlag(QGraphicsItem::ItemIsFocusable);
 	rectangle->setFocus();
 	//rectangle->setBrush(QColor(Qt::green));
-	rectangle->setBrush(QPixmap(":/images/gif1.gif"));
+	//rectangle->setBrush(QPixmap(":/images/gif1.gif"));
+	rectangle->setBrush(QPixmap("images\\gif1.gif"));
 	//rectangle->setPos(5, 5);
 	setPos(50, 50);
 }
@@ -29,7 +30,8 @@ Player::Player(QGraphicsItem *parent, int val) :/*QObject(),*/ QGraphicsRectItem
 	rectangle->setFlag(QGraphicsItem::ItemIsFocusable);
 	rectangle->setFocus();
 	//rectangle->setBrush(QColor(Qt::green));
-	rectangle->setBrush(QPixmap(":/images/PlayerRight.png"));
+	//rectangle->setBrush(QPixmap(":/images/PlayerRight.png"));
+	rectangle->setBrush(QPixmap("images\\PlayerRight.png"));
 	//rectangle->setPos(5, 5);
 	if (val == 1 || val == 2) {
 		setPos(50, 50);
@@ -267,7 +269,7 @@ void Player::moveLeft3(std::vector<Box *> &pudelka, std::vector<Wall *> &sciany)
 		setPos(x() - 50, y());
 	}
 
-	rectangle->setBrush(QPixmap(":/images/PlayerLeft.png"));
+	rectangle->setBrush(QPixmap("images\\PlayerLeft.png"));
 }
 
 void Player::moveRight3(std::vector<Box *> &pudelka, std::vector<Wall *> &sciany){
@@ -288,7 +290,7 @@ void Player::moveRight3(std::vector<Box *> &pudelka, std::vector<Wall *> &sciany
 		setPos(x() + 50, y());
 	}
 
-	rectangle->setBrush(QPixmap(":/images/PlayerRight.png"));
+	rectangle->setBrush(QPixmap("images\\PlayerRight.png"));
 }
 
 void Player::moveUp3(std::vector<Box *> &pudelka, std::vector<Wall *> &sciany){
@@ -309,7 +311,7 @@ void Player::moveUp3(std::vector<Box *> &pudelka, std::vector<Wall *> &sciany){
 		setPos(x(), y() - 50);
 	}
 
-	rectangle->setBrush(QPixmap(":/images/PlayerUp.png"));
+	rectangle->setBrush(QPixmap("images\\PlayerUp.png"));
 }
 
 void Player::moveDown3(std::vector<Box *> &pudelka, std::vector<Wall *> &sciany){
@@ -330,7 +332,7 @@ void Player::moveDown3(std::vector<Box *> &pudelka, std::vector<Wall *> &sciany)
 		setPos(x(), y() + 50);
 	}
 
-	rectangle->setBrush(QPixmap(":/images/PlayerDown.png"));
+	rectangle->setBrush(QPixmap("images\\PlayerDown.png"));
 }
 
 /// <summary>

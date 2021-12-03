@@ -30,7 +30,6 @@ Level::Level(QGraphicsItem *parent, int nrLevel) : QGraphicsRectItem(parent), le
 
 void Level::createLevel(int val){
 	map = new Map(levelMap, val);
-	player = new Player(levelMap, val);
 
 	coinCount = new QGraphicsTextItem(levelMap);
 	coinCount->setPos(540, 50);
@@ -40,6 +39,7 @@ void Level::createLevel(int val){
 	levelText->setPos(540, 20);
 	levelText->setPlainText("Level: " + QString::number(val));
 	testTworzeniaObiektow();
+	player = new Player(levelMap, val);
 }
 
 void Level::nextLevel(int val){
