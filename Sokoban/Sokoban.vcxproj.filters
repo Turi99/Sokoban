@@ -24,6 +24,9 @@
     <Filter Include="Items">
       <UniqueIdentifier>{b072669a-d921-4c51-a711-5562b45bb84d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Screens">
+      <UniqueIdentifier>{8cbe8e75-c193-4a6c-bd17-522103bb7447}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -113,5 +116,19 @@
     <QtRcc Include="res.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="C:\Users\Piotr\Desktop\Main menu.PNG">
+      <Filter>Screens</Filter>
+    </Image>
+    <Image Include="C:\Users\Piotr\Desktop\Level 4.PNG">
+      <Filter>Screens</Filter>
+    </Image>
+    <Image Include="C:\Users\Piotr\Desktop\Level 3.PNG">
+      <Filter>Screens</Filter>
+    </Image>
+    <Image Include="C:\Users\Piotr\Desktop\Select level.PNG">
+      <Filter>Screens</Filter>
+    </Image>
   </ItemGroup>
 </Project>

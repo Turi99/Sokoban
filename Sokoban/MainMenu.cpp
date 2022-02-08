@@ -36,6 +36,11 @@ MainMenu::MainMenu(QGraphicsItem *parent) : /*QObject(),*/ QGraphicsRectItem(par
 	arrow2 = new QGraphicsRectItem(main);
 	arrow2->setRect(350, 200, 30, 30);
 	arrow2->setBrush(QColor(Qt::red));
+
+	titleTxt = new QGraphicsTextItem(main);
+	titleTxt->setPos(140, 80);
+	titleTxt->setPlainText("SOKOBAN");
+	titleTxt->setFont(QFont("Times", 50, QFont::Bold));
 }
 
 void MainMenu::setCursorPosition(int val) {

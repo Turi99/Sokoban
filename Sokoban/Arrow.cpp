@@ -7,3 +7,5 @@ Arrow::Arrow(QGraphicsItem *parent) :QGraphicsRectItem(parent) {
 void Arrow::setPosition(int x, int y){
 	shape->setPos(x, y);
 }
+
+

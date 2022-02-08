@@ -122,6 +122,12 @@
   <ItemGroup>
     <QtRcc Include="res.qrc" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="C:\Users\Piotr\Desktop\Level 3.PNG" />
+    <Image Include="C:\Users\Piotr\Desktop\Level 4.PNG" />
+    <Image Include="C:\Users\Piotr\Desktop\Main menu.PNG" />
+    <Image Include="C:\Users\Piotr\Desktop\Select level.PNG" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
     <Import Project="$(QtMsBuild)\qt.targets" />
