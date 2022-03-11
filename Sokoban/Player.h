@@ -10,15 +10,7 @@
 
 #include <vector>
 
-/*struct wyszukajSciany {
-	bool operator()(const std::vector<Wall *> &sciany, int posX, int posY) {
-		for (int i = 0; i < sciany.size(); i++) {
-			if (posX - 50 != sciany[i]->getPosition().first && posY == sciany[i]->getPosition().second) {
-				return true;
-			}
-		}
-	}
-};*/
+
 
 class Player: /*public QObject,*/ public QGraphicsRectItem{
 	//Q_OBJECT
@@ -28,18 +20,6 @@ public:
 
 	QGraphicsRectItem *rectangle;
 
-	void moveLeft();
-	void moveRight();
-	void moveUp();
-	void moveDown();
-
-	///////
-	void moveLeft2(std::vector<Box *> &pudelka);
-	void moveRight2(std::vector<Box *> &pudelka);
-	void moveUp2(std::vector<Box *> &pudelka);
-	void moveDown2(std::vector<Box *> &pudelka);
-
-	//////
 	void moveLeft3(std::vector<Box *> &pudelka, std::vector<Wall *> &sciany);
 	void moveRight3(std::vector<Box *> &pudelka, std::vector<Wall *> &sciany);
 	void moveUp3(std::vector<Box *> &pudelka, std::vector<Wall *> &sciany);

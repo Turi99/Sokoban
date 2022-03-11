@@ -15,7 +15,6 @@ Box::Box(QGraphicsItem *parent, int x, int y) : QGraphicsRectItem(parent) {
 	shape->setFocus();
 	//shape->setBrush(QPixmap(":/images/brown.png"));
 	shape->setBrush(QPixmap("images\\brown.png"));
-	//shape->setBrush(QColor(Qt::green)); // for test
 	shape->setPos(x, y);
 }
 

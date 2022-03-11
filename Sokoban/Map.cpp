@@ -13,9 +13,7 @@ extern Game *game;
 
 Map::Map(QGraphicsItem *parent) :QObject(), QGraphicsRectItem(parent) {
 	std::fstream plikMacierz;
-	//plikMacierz.open("..\\Sokoban\\images\\map1.txt", std::ios::in);
 	plikMacierz.open("..\\Sokoban\\images\\map1.txt", std::ios::in);
-	//plikMacierz.open(":/map1.txt", std::ios::in);
 
 	if (!plikMacierz.good()) {
 		//std::cerr << "Nie mozna otworzyc pliku, lub nie istnieje\n";
@@ -40,8 +38,6 @@ Map::Map(QGraphicsItem *parent) :QObject(), QGraphicsRectItem(parent) {
 			mapka[j][i]->setRect(j * 50, i * 50, 50, 50);
 			//mapka[i][j]->setTransformOriginPoint(0, 0);
 
-			//mapka[i][j]->setFlag(QGraphicsItem::ItemIsFocusable);
-			//mapka[i][j]->setFocus();
 			if (mapa[i][j] == 0) {
 				//mapka[j][i]->setBrush(QPixmap(":/images/Wall2.png"));
 				//mapka[j][i]->setBrush(QPixmap(":/image/white.png"));
@@ -64,55 +60,22 @@ Map::Map(QGraphicsItem *parent) :QObject(), QGraphicsRectItem(parent) {
 }
 
 Map::Map(QGraphicsItem *parent, int val) :QObject(), QGraphicsRectItem(parent) {
-	//QFile file("..\\Sokoban\\images\\map2.txt");
-
-	/*for (int i = 0; i < 10; i++) {
-		for (int j = 0; j < 10; j++) {
-			mapa[i][j] = 0;
-		}
-	}*/
-
 	std::fstream plikMacierz;
 
-	//QString filename1 = "..\\Sokoban\\images\\map1.txt";
-	//QString filename2 = "..\\Sokoban\\images\\map2.txt";
-	//QString filename3 = "..\\Sokoban\\images\\map3.txt";
-
-	//std::string filename1 = "..\\Sokoban\\images\\map1.txt";
 	std::string filename1 = "..\\images\\map1.txt";
-	//std::string filename2 = "..\\Sokoban\\images\\map2.txt";
 	std::string filename2 = "..\\images\\map2.txt";
-	//std::string filename3 = "..\\Sokoban\\images\\map3.txt";
 	std::string filename3 = "..\\images\\map3.txt";
 
-	//QString result = filename + strLvl;
-
-	
-
-	//plikMacierz.open("..\\Sokoban\\images\\map1.txt",std::ios::in);
-	//plikMacierz.open(result,std::ios::in);
-
-	/*val == 1 ? plikMacierz.open("..\\Sokoban\\images\\map1.txt", std::ios::in) :
-		plikMacierz.open("..\\Sokoban\\images\\map2.txt", std::ios::in);*/
-
 	if (val == 1) {
-		//plikMacierz.open(filename1, std::ios::in);
-		//plikMacierz.open("..\\Sokoban\\images\\map1.txt", std::ios::in);
 		plikMacierz.open("images\\map1.txt", std::ios::in);
 	}
 	else if (val == 2) {
-		//plikMacierz.open(filename2, std::ios::in);
-		//plikMacierz.open("..\\Sokoban\\images\\map2.txt", std::ios::in);
 		plikMacierz.open("images\\map2.txt", std::ios::in);
 	}
 	else if (val == 3) {
-		//plikMacierz.open(filename3, std::ios::in);
-		//plikMacierz.open("..\\Sokoban\\images\\map3.txt", std::ios::in);
 		plikMacierz.open("images\\map3.txt", std::ios::in);
 	}
 	else if (val == 4) {
-		//plikMacierz.open(filename3, std::ios::in);
-		//plikMacierz.open("..\\Sokoban\\images\\map4.txt", std::ios::in);
 		plikMacierz.open("images\\map4.txt", std::ios::in);
 	}
 
@@ -134,15 +97,11 @@ Map::Map(QGraphicsItem *parent, int val) :QObject(), QGraphicsRectItem(parent) {
 	int ilePudelek = 0;
 
 	for (int i = 0; i < 10; i++) {
-		//std::vector<Box *> list;
 		for (int j = 0; j < 10; j++) {
 			mapka[j][i] = new QGraphicsRectItem(this);
 			mapka[j][i]->setRect(j*50, i*50, 50, 50);
 			//mapka[i][j]->setTransformOriginPoint(0, 0);
 			
-
-			//mapka[i][j]->setFlag(QGraphicsItem::ItemIsFocusable);
-			//mapka[i][j]->setFocus();
 			if (mapa[i][j] == 0){
 				//mapka[j][i]->setBrush(QPixmap(":/images/Wall2.png"));
 				//mapka[j][i]->setBrush(QPixmap(":/images/white.png"));
@@ -159,27 +118,16 @@ Map::Map(QGraphicsItem *parent, int val) :QObject(), QGraphicsRectItem(parent) {
 				//game->level->ilePunktow+=1;
 			}
 			else if (mapa[i][j] == 3) {
-				//mapka[j][i]->setRect(1000, 1000, 50, 50);
-				//mapka[j][i]->setBrush(QPixmap(":/images/brown.png"));
-				//mapka[j][i]->setBrush(QPixmap(":/images/white.png"));
 				mapka[j][i]->setBrush(QPixmap("images\\white.png"));
-				//game->level->ilePudelek+=1;
 				ilePudelek++;
 				// game->level->coordsBoxs.push_back(std::make_pair(j * 50, i * 50));
 				//list.push_back(new Box(this, j * 50, i * 50));
 				//game->level->boxs2.push_back(new Box(this, j * 50, i * 50));
 			}
 			
-
-			/*QLabel *l = new QLabel();
-			l->setGeometry(j * 50 + 10, i * 50 + 10, 20, 20);
-			l->setText(QString::number(i)+" "+ QString::number(j));*/
 		}
-		//pudelka.push_back(list);
-		//list.clear();
+		
 	}
-
-	//game->level->ilePudelek += ilePudelek;
 
 }
 

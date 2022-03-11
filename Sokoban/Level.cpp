@@ -137,38 +137,25 @@ void Level::testTworzeniaObiektow(){
 void Level::keyPressEvent(QKeyEvent *event){
 	if (event->key() == Qt::Key_A) {
 		if (map->getCoinCount() != 0) {
-			//player->moveLeft();
-			//player->moveLeft2(pudelka);
 			player->moveLeft3(pudelka, sciany);
-			//checkCoinCount(punkty,pudelka);
 			checkBoxsAndPoints(punkty, pudelka);
-			//wyszukajSciany();
 		}
 	}
 	else if (event->key() == Qt::Key_D) {
 		if (map->getCoinCount() != 0) {
-			//player->moveRight();
-			//player->moveRight2(pudelka);
 			player->moveRight3(pudelka, sciany);
-			//checkCoinCount(punkty, pudelka);
 			checkBoxsAndPoints(punkty, pudelka);
 		}
 	}
 	else if (event->key() == Qt::Key_W) {
 		if (map->getCoinCount() != 0) {
-			//player->moveUp();
-			//player->moveUp2(pudelka);
 			player->moveUp3(pudelka, sciany);
-			//checkCoinCount(punkty, pudelka);
 			checkBoxsAndPoints(punkty, pudelka);
 		}
 	}
 	else if (event->key() == Qt::Key_S) {
 		if (map->getCoinCount() != 0) {
-			//player->moveDown();
-			//player->moveDown2(pudelka);
 			player->moveDown3(pudelka, sciany);
-			//checkCoinCount(punkty, pudelka);
 			checkBoxsAndPoints(punkty, pudelka);
 		}
 	}
